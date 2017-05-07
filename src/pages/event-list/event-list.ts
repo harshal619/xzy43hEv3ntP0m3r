@@ -64,8 +64,20 @@ export class EventList {
 
   ionViewCanEnter(){
 
-    this.eventsFirebase;
-    debugger;
+
+    // this.eventsFirebase.subscribe((_items)=> {
+    //         this.events = [];
+    //         _items.forEach(item => {
+    //             var tempEventId=item.eventID;
+    //             var tempAgentId=item.agentId;
+    //             var tempEventTitle=item.eventTitle;
+
+
+    //             this.events.push(item);
+                
+    //         })
+    //     });  
+
     let env = this;
     NativeStorage.getItem('user')
     .then(function (data){
