@@ -34,7 +34,7 @@ import { IonicStorageModule } from '@ionic/storage';
 //     storageBucket: "eventtestproject.appspot.com",
 //     messagingSenderId: "589957868091"
 // }
-
+ 
   export const config = {
     apiKey: "AIzaSyCaY-s14DlDlKgfrTtSrtYx4jQVUvZ4I-0",
     authDomain: "eventpower-166715.firebaseapp.com",
