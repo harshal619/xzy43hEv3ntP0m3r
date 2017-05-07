@@ -44,7 +44,7 @@ export class MyApp {
 
    go_to_home(Page){
     // this.nav.push(HomePage);
-    this.nav.push(EventList);
+    this.nav.setRoot(EventList);
   }
  
   go_to_about(){
