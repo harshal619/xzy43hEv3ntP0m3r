@@ -41,12 +41,12 @@ export class EventList {
 
 
   eventsFirebase : FirebaseListObservable<any[]>;
-  
+
   constructor(public navCtrl: NavController, public navParams: NavParams,private eventService: EventService,
    userModel: UserModel, public googlePlus: GooglePlus, public storage: Storage,angFire: AngularFireDatabase) {
   
 
-      this.eventsFirebase = angFire.list("/Tables/Agents");
+      this.eventsFirebase = angFire.list("/Tables/Events");
 }
 
   ionViewDidLoad() {
@@ -63,6 +63,9 @@ export class EventList {
   }
 
   ionViewCanEnter(){
+
+    this.eventsFirebase;
+    debugger;
     let env = this;
     NativeStorage.getItem('user')
     .then(function (data){
