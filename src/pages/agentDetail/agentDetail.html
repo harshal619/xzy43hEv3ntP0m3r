@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+       <ion-icon name="menu"></ion-icon>
+    </button>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="login-content" padding>
+<ion-item>
+    <ion-label color="primary" floating>AgentID</ion-label>
+    <ion-input [value]="agentId" [(ngModel)]="agentId"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label color="primary" floating>Agent Name</ion-label>
+    <ion-input [value]="agentName" [(ngModel)]="agentName"></ion-input>
+  </ion-item>
+  <button ion-button block (click)="addAgent()">Save</button>
+  <button ion-button block>Cancel</button>
+</ion-content>
+
+
+

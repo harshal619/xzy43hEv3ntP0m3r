@@ -1,0 +1,59 @@
+<!--
+  Generated template for the EventList page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{userModel.name}}</ion-title>
+    <button ion-button menuToggle>
+       <ion-icon name="menu"></ion-icon>
+    </button>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+ 
+  <ion-card *ngFor="let event of events">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/8/86/Victoria_Terminus%2C_Mumbai.jpg"/>
+  <ion-card-content>
+    <ion-card-title>
+      {{event.title}}
+      </ion-card-title>
+    <p>
+      {{event.agent}}
+    </p>
+  </ion-card-content>
+
+  <ion-row no-padding>
+      <ion-col>
+        <button ion-button clear small color="danger" icon-left>
+          <ion-icon name='thumbs-up'></ion-icon>
+          Going
+        </button>
+      </ion-col>
+      <ion-col text-center>
+        <button ion-button clear small color="danger" icon-left>
+          <ion-icon name='chatbubbles'></ion-icon>
+          Maybe
+        </button>
+      </ion-col>
+      <ion-col text-right>
+        <button ion-button clear small color="danger" icon-left>
+          <ion-icon name='thumbs-down'></ion-icon>
+          Can't Go'
+        </button>
+      </ion-col>
+    </ion-row>
+</ion-card>
+   
+  <button ion-button block color="danger" (click)="doGoogleLogout()">Google Logout</button>
+
+  <ion-fab right bottom>
+    <button ion-fab color="#66ccff" (click)="addEvent()"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+</ion-content>
