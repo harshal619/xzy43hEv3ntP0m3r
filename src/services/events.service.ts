@@ -14,9 +14,34 @@ import { NativeStorage } from 'ionic-native';
   ]
 })
 export class EventService{
-    private events:{eventId: string, title: string,agent: string,eventDate: string, eventTime: string,eventLocation: string}[] = [];
+    private events:{
+      eventId: string,
+    title: string,
+    eventDate: string,
+    eventTime: string,
+    eventLocation: string,
+    eventCity:string,
+
+    agent: string,
+    categoryID:string,
+    attendingFlag:boolean,
+    fees:PaymentCurrencyAmount,
+    userId:string,
+  }[] = [];
     
-    addEvent(event: {eventId: string, title: string,agent: string,eventDate: string, eventTime: string,eventLocation: string}){
+    addEvent(event: {eventId: string,
+    title: string,
+    eventDate: string,
+    eventTime: string,
+    eventLocation: string,
+    eventCity:string,
+
+    agent: string,
+    categoryID:string,
+    attendingFlag:boolean,
+    fees:PaymentCurrencyAmount,
+    userId:string,
+  }){
         this.events.push(event);
     }
 

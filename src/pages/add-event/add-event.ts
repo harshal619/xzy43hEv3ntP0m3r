@@ -16,8 +16,16 @@ import { Storage } from '@ionic/storage';
   templateUrl: 'add-event.html',
 })
 export class AddEventPage {
-  allEvents:{eventId: string, title: string,agent: string,eventDate: string, eventTime: string,eventLocation: string}[] = [];
-  private events = {eventId: "", title: "",agent: "",eventDate: "", eventTime: "",eventLocation: ""};
+  allEvents:{eventId: string, title: string,agent: string,eventDate: string, 
+    eventTime: string,eventLocation: string,eventCity:string,
+  categoryID:string,attendingFlag:boolean,fees:PaymentCurrencyAmount,userId:string
+}[] = [];
+
+  private events = {eventId: "", title: "",agent: "",eventDate: "", 
+  eventTime: "",eventLocation: "",eventCity:"",
+  categoryID:"",attendingFlag:false,fees:0.00,userId:""};
+ 
+
   constructor(public navCtrl: NavController, public navParams: NavParams,public EventService: EventService,public storage: Storage) {
   }
 
@@ -25,12 +33,19 @@ export class AddEventPage {
     console.log('ionViewDidLoad AddEventPage');
   }
 
-  onAddEvent(value: {eventName: string,eventLocation: string,agentName: string,eventDate: string,eventTime: string}){
+  onAddEvent(value: {eventName: string,eventLocation: string,agentName: string,eventDate: string,eventTime: string,eventCity: string,eventCategory:string
+  }){
     this.events.title = value.eventName;
     this.events.eventLocation = value.eventLocation;
     this.events.agent = value.agentName;
     this.events.eventDate = value.eventDate;
     this.events.eventTime = value.eventTime;
+    
+    this.events.attendingFlag =false;
+    this.events.eventCity=value.eventCity;
+    this.events.fees=0.00;
+    this.events.categoryID=value.eventCategory;
+    this.events.userId="";
 
     this.EventService.addEvent(this.events);
 

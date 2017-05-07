@@ -8,6 +8,8 @@ import { EventService } from '../../services/events.service';
 import { GooglePlus } from '@ionic-native/google-plus';
 import { Storage } from '@ionic/storage';
 
+import {AngularFireDatabase,FirebaseListObservable} from 'angularfire2/database';
+
 /**
  * Generated class for the EventList page.
  *
@@ -21,10 +23,31 @@ import { Storage } from '@ionic/storage';
 })
 export class EventList {
   userModel: UserModel = new UserModel();
-  events:{eventId: string, title: string,agent: string,eventDate: string, eventTime: string,eventLocation: string}[] = [];
+  events:{
+    eventId: string,
+    title: string,
+    eventDate: string,
+    eventTime: string,
+    eventLocation: string,
+    eventCity:string,
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,private eventService: EventService, userModel: UserModel, public googlePlus: GooglePlus, public storage: Storage) {
-  }
+    agent: string,
+    categoryID:string,
+    attendingFlag:boolean,
+    fees:PaymentCurrencyAmount,
+    userId:string,
+
+  }[] = [];
+
+
+  eventsFirebase : FirebaseListObservable<any[]>;
+  
+  constructor(public navCtrl: NavController, public navParams: NavParams,private eventService: EventService,
+   userModel: UserModel, public googlePlus: GooglePlus, public storage: Storage,angFire: AngularFireDatabase) {
+  
+
+      this.eventsFirebase = angFire.list("/Tables/Agents");
+}
 
   ionViewDidLoad() {
     // this.eventService.loadNativeEvents();

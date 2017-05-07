@@ -5,6 +5,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { GooglePlus } from '@ionic-native/google-plus';
 // import { GoogleAuth, User } from '@ionic/cloud-angular';
 
+import { NativeStorage } from 'ionic-native';
+
 import { HomePage } from '../pages/home/home';
 import { EventList } from '../pages/event-list/event-list';
 import { AboutPage } from '../pages/about/about';
@@ -52,6 +54,16 @@ export class MyApp {
   }
   go_to_setting(){
     this.nav.push(SettingPage);
+  }
+  go_to_logout(){
+    // let nav = this.navCtrl;
+    this.googlePlus.logout()
+    .then(function (response) {
+      NativeStorage.remove('user');
+      this.nav.push(HomePage);
+    },function (error) {
+      console.log(error);
+    })
   }
 }
 
