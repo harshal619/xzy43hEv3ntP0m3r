@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-
+import { AgentPage } from '../agent/agent';
 @Component({
   selector: 'page-setting',
   templateUrl: 'setting.html'
@@ -13,11 +13,8 @@ export class SettingPage {
       
   };
 
-  agentClick(){
-       
-    // this.navCtrl.push(AgentPage,{
-
-    // });  
+  agentClick(){   
+    this.navCtrl.push(AgentPage);  
   };
 
 budgetClick(){

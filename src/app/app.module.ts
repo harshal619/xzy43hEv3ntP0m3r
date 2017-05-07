@@ -26,23 +26,23 @@ import { IonicStorageModule } from '@ionic/storage';
 // import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
 
 // Roshan's Config
-// export const firebaseConfig={
-//     apiKey: "AIzaSyA7Yz3ghJ-0JMoNxlGBV-Ig20cTWnV7YtI",
-//     authDomain: "eventtestproject.firebaseapp.com",
-//     databaseURL: "https://eventtestproject.firebaseio.com",
-//     projectId: "eventtestproject",
-//     storageBucket: "eventtestproject.appspot.com",
-//     messagingSenderId: "589957868091"
-// }
+export const config={
+    apiKey: "AIzaSyA7Yz3ghJ-0JMoNxlGBV-Ig20cTWnV7YtI",
+    authDomain: "eventtestproject.firebaseapp.com",
+    databaseURL: "https://eventtestproject.firebaseio.com",
+    projectId: "eventtestproject",
+    storageBucket: "eventtestproject.appspot.com",
+    messagingSenderId: "589957868091"
+}
  
-  export const config = {
-    apiKey: "AIzaSyCaY-s14DlDlKgfrTtSrtYx4jQVUvZ4I-0",
-    authDomain: "eventpower-166715.firebaseapp.com",
-    databaseURL: "https://eventpower-166715.firebaseio.com",
-    projectId: "eventpower-166715",
-    storageBucket: "eventpower-166715.appspot.com",
-    messagingSenderId: "110697097203"
-  };
+  // export const config = {
+  //   apiKey: "AIzaSyCaY-s14DlDlKgfrTtSrtYx4jQVUvZ4I-0",
+  //   authDomain: "eventpower-166715.firebaseapp.com",
+  //   databaseURL: "https://eventpower-166715.firebaseio.com",
+  //   projectId: "eventpower-166715",
+  //   storageBucket: "eventpower-166715.appspot.com",
+  //   messagingSenderId: "110697097203"
+  // };
 
 // const cloudSettings: CloudSettings = {
 //   'core': {

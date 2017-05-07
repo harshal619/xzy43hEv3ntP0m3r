@@ -16,10 +16,9 @@ export class AgentDetailPage {
   constructor(public navCtrl: NavController, angFire: AngularFireDatabase) {
       this.items = angFire.list("/Tables/Agents");    
 
-      
-
       this.agentName=null;
       this.agentId="A"+1;
+      
   };
 
   addAgent(){

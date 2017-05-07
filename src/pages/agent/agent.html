@@ -3,9 +3,6 @@
     <button ion-button menuToggle>
        <ion-icon name="menu"></ion-icon>
     </button>
-    <button ion-button (click)="addAgent()">
-       <ion-icon name="add"></ion-icon>
-    </button>
   </ion-navbar>
 </ion-header>
 <ion-content padding class="settingsPage">
@@ -14,4 +11,8 @@
     {{item.agentName}}
   </ion-item>
   </ion-list>
+  
+  <ion-fab right bottom>
+    <button ion-fab color="#66ccff" (click)="addAgent()"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
 </ion-content>

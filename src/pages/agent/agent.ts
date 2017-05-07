@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 
 import {AngularFireDatabase,FirebaseListObservable} from 'angularfire2/database';
 
+import { AgentDetailPage } from '../agentDetail/agentDetail';
 
 @Component({
   selector: 'page-agent',
@@ -20,9 +21,6 @@ export class AgentPage {
       this.items = angFire.list("/Tables/Agents");
   };
   addAgent(){
-    //   this.items.push({
-    //         agentID: "A1",
-    //         agentName:"Roshan"
-    //   });
+      this.navCtrl.push(AgentDetailPage);  
   };
 }

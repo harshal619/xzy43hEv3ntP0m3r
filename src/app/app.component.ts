@@ -43,18 +43,15 @@ export class MyApp {
   }
 
    go_to_home(Page){
-    this.nav.setRoot(HomePage);
+    // this.nav.push(HomePage);
+    this.nav.push(EventList);
   }
  
   go_to_about(){
-    this.nav.setRoot(AboutPage);  
+    this.nav.push(AboutPage);  
   }
   go_to_setting(){
-    // this.nav.setRoot(SettingPage);
-    this.nav.setRoot(AgentPage);
-  }
-  go_to_agentDetail(){
-    this.nav.setRoot(AgentDetailPage);
+    this.nav.push(SettingPage);
   }
 }
 
