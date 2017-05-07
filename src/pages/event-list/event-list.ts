@@ -71,10 +71,7 @@ export class EventList {
     //             var tempEventId=item.eventID;
     //             var tempAgentId=item.agentId;
     //             var tempEventTitle=item.eventTitle;
-
-
-    //             this.events.push(item);
-                
+    //             this.events.push(item);                
     //         })
     //     });  
 
