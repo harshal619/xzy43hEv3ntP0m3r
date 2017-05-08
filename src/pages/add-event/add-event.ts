@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { EventService } from '../../services/events.service';
 import { NativeStorage } from 'ionic-native';
 import { Storage } from '@ionic/storage';
+import { AlertController } from 'ionic-angular';
 
 import {AngularFireDatabase,FirebaseListObservable} from 'angularfire2/database';
 
@@ -32,7 +33,7 @@ export class AddEventPage {
   agentsFirebase : FirebaseListObservable<any[]>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public EventService: EventService,
-  public storage: Storage,angFire: AngularFireDatabase) {
+  public storage: Storage,angFire: AngularFireDatabase,public alertCtrl: AlertController) {
     
     this.eventsFirebaseDetail = angFire.list("/Tables/Events");   
     this.agentsFirebase = angFire.list("/Tables/Agents"); 
@@ -83,6 +84,13 @@ export class AddEventPage {
     // ****************add event in firebase****************************
 
     this.eventsFirebaseDetail.push(this.events);
+
+    let alert = this.alertCtrl.create({
+      title: 'Alert!',
+      subTitle: 'New Event Added!',
+      buttons: ['OK']
+    });
+    alert.present();
   }
 
 }
