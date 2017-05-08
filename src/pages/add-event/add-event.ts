@@ -6,6 +6,7 @@ import { Storage } from '@ionic/storage';
 import { AlertController } from 'ionic-angular';
 
 import {AngularFireDatabase,FirebaseListObservable} from 'angularfire2/database';
+import * as firebase from 'firebase';
 
 /**
  * Generated class for the AddEventPage page.
@@ -34,13 +35,14 @@ export class AddEventPage {
 
 
   categories:{ID:string,Name:string}[]=[];
-  
+  tempRef;  
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public EventService: EventService,
   public storage: Storage,angFire: AngularFireDatabase,public alertCtrl: AlertController) {
     
     this.eventsFirebaseDetail = angFire.list("/Tables/Events");   
     this.agentsFirebase = angFire.list("/Tables/Agents"); 
+    
 
     this.categories.push({ID:"C1",Name:"UG"});
     this.categories.push({ID:"C2",Name:"UG/MBA/MS"});
@@ -92,10 +94,21 @@ export class AddEventPage {
 
 
 
-
+    var myRef=firebase.database().ref();
+    var eventsRef=myRef.child("/Tables/Events");
+    
+    var length;
+    this.eventsFirebaseDetail.subscribe((items)=>{
+        length=items.length;
+        length=length+1;
+        this.events.eventId='E'+length;
+    });
+// ******line to add into dataBase
+     
+     eventsRef.child('E'+length).set(this.events);
     // ****************add event in firebase****************************
-
-    this.eventsFirebaseDetail.push(this.events);
+    
+    // this.eventsFirebaseDetail.push(this.events);
 
     let alert = this.alertCtrl.create({
       title: 'Alert!',
