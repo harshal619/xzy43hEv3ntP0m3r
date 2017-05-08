@@ -13,6 +13,7 @@ import { AboutPage } from '../pages/about/about';
 import { SettingPage } from '../pages/setting/setting';
 import { AgentPage } from '../pages/agent/agent';
 import { AgentDetailPage } from '../pages/agentDetail/agentDetail';
+import { UserModel } from '../pages/event-list/user.model';
 
 @Component({
   templateUrl: 'app.html'
@@ -21,7 +22,7 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
   rootPage:any = EventList;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,public googlePlus: GooglePlus) {
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,public googlePlus: GooglePlus, public userModel:UserModel) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -40,6 +41,7 @@ export class MyApp {
         splashScreen.hide();
       });
 
+      userModel.getUserFromDB();
       statusBar.styleDefault();
     });
   }
