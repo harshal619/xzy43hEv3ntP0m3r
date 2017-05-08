@@ -23,11 +23,11 @@ export class AgentDetailPage {
 
   addAgent(){
     var agentId=this.agentId;
-        var agentName=this.agentName;
+    var agentName=this.agentName;
         
-      this.items.push({
-            agentID: agentId,
-            agentName:agentName,
-      });
+    this.items.push({
+         agentID: agentId,
+         agentName:agentName,
+   });
   };
 }
