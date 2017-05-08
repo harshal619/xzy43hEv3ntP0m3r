@@ -39,11 +39,6 @@ export class EventList {
 
   }[] = [];
 
-
-    private singleEvent = {eventId: "", title: "",agentID: "",eventDate: "", 
-  eventTime: "",eventLocation: "",eventCity:"",
-  categoryID:"",attendingFlag:false,fees:0.00,userId:""}
-
   eventsFirebase : FirebaseListObservable<any[]>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,private eventService: EventService,
@@ -62,30 +57,36 @@ export class EventList {
 
   ionViewWillEnter(){
     // alert("getting events");
-    this.events = this.eventService.getEvents();
+    // this.events = this.eventService.getEvents();
     // alert(JSON.stringify(this.events));
   }
 
   ionViewCanEnter(){
-
+// alert("ionviecan enter");
     // fetch values from firebase database...
+    var that=this;
+    this.events=[];
         this.eventsFirebase.subscribe((_items)=> {
-            // this.events = [];
-            _items.forEach(item => {
+                _items.forEach(item => {
 
-                this.singleEvent.eventId=item.eventID;
-                this.singleEvent.agentID=item.agentID;
-                this.singleEvent.title=item.title;
-                this.singleEvent.eventDate=item.eventDate;
-                this.singleEvent.eventTime=item.eventTime;
-                this.singleEvent.eventLocation=item.eventLocation;
-                this.singleEvent.eventCity=item.eventCity;
-                this.singleEvent.categoryID=item.eventCategoryID;
-                this.singleEvent.attendingFlag=item.eventAttendingFlag;
-                this.singleEvent.fees=item.eventFees;
-                this.singleEvent.userId=item.eventUserId;
+                var jsonEvent={
+                  eventId:item.eventID,
+                  agentID:item.agentID,
+                  title:item.title,
+                  eventDate:item.eventDate,
+                  eventTime:item.eventTime,
+                  eventLocation:item.eventLocation,
+                  eventCity:item.eventCity,
+                  categoryID:item.eventCategoryID,
+                  attendingFlag:item.eventAttendingFlag,
+                  fees:item.eventFees,
+                  userId:item.eventUserId
+                };
                 
-                this.events.push(this.singleEvent);                
+                
+                // this.eventService.addEvent(jsonEvent);
+                
+                this.events.push(jsonEvent) ;
             })
         });  
 

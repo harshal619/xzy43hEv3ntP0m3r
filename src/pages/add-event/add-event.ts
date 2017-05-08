@@ -28,13 +28,13 @@ export class AddEventPage {
   categoryID:"",attendingFlag:false,fees:0.00,userId:""};
  
  
-  eventsFirebase : FirebaseListObservable<any[]>;
+  eventsFirebaseDetail : FirebaseListObservable<any[]>;
   agentsFirebase : FirebaseListObservable<any[]>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public EventService: EventService,
   public storage: Storage,angFire: AngularFireDatabase) {
     
-    this.eventsFirebase = angFire.list("/Tables/Events");   
+    this.eventsFirebaseDetail = angFire.list("/Tables/Events");   
     this.agentsFirebase = angFire.list("/Tables/Agents"); 
   }
 
@@ -57,9 +57,9 @@ export class AddEventPage {
     this.events.categoryID=value.eventCategory;
     this.events.userId="";
 
-    this.EventService.addEvent(this.events);
 
     // ********commented by roshan*****
+    // this.EventService.addEvent(this.events);
     // this.allEvents = this.EventService.getEvents();
     // this.storage.set('events', JSON.stringify(this.allEvents));
     // this.navCtrl.pop();
@@ -82,7 +82,7 @@ export class AddEventPage {
 
     // ****************add event in firebase****************************
 
-    this.eventsFirebase.push(this.events);
+    this.eventsFirebaseDetail.push(this.events);
   }
 
 }
