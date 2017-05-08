@@ -16,6 +16,9 @@ export class SettingPage {
   agentClick(){   
     this.navCtrl.push(AgentPage);  
   };
+  categoryClick(){
+    // this.navCtrl.push(CategoryPage);  
+  };
 
 budgetClick(){
   alert("budget");

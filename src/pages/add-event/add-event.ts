@@ -32,11 +32,23 @@ export class AddEventPage {
   eventsFirebaseDetail : FirebaseListObservable<any[]>;
   agentsFirebase : FirebaseListObservable<any[]>;
 
+
+  categories:{ID:string,Name:string}[]=[];
+  
+
   constructor(public navCtrl: NavController, public navParams: NavParams,public EventService: EventService,
   public storage: Storage,angFire: AngularFireDatabase,public alertCtrl: AlertController) {
     
     this.eventsFirebaseDetail = angFire.list("/Tables/Events");   
     this.agentsFirebase = angFire.list("/Tables/Agents"); 
+
+    this.categories.push({ID:"C1",Name:"UG"});
+    this.categories.push({ID:"C2",Name:"UG/MBA/MS"});
+    // this.categories.push({ID:"C3",Name:"UG"});
+    // this.categories.push({ID:"C4",Name:"UG"});
+    // this.categories.push({ID:"C5",Name:"UG"});
+    // this.categories.push({ID:"C6",Name:"UG"});
+
   }
 
   ionViewDidLoad() {
