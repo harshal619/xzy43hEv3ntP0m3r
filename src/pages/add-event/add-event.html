@@ -31,9 +31,14 @@
       <ion-label floating>Event City</ion-label>
       <ion-input type="text" name="eventCity" ngModel required></ion-input>
     </ion-item>
+   
     <ion-item>
-      <ion-label floating>Agent Name</ion-label>
-      <ion-input type="text" name="agentName" ngModel required></ion-input>
+
+      <ion-label flaoting>Agent Name</ion-label>
+
+<ion-select name="agentName" ngModel required >
+    <ion-option *ngFor="let agent of agentsFirebase | async" value="{{agent.agentID}}" >{{agent.agentName}}</ion-option>
+</ion-select>
     </ion-item>
     <ion-item>
       <ion-label floating>Event Date</ion-label>

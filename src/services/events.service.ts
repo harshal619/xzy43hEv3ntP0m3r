@@ -22,7 +22,7 @@ export class EventService{
     eventLocation: string,
     eventCity:string,
 
-    agent: string,
+    agentID: string,
     categoryID:string,
     attendingFlag:boolean,
     fees:PaymentCurrencyAmount,
@@ -36,7 +36,7 @@ export class EventService{
     eventLocation: string,
     eventCity:string,
 
-    agent: string,
+    agentID: string,
     categoryID:string,
     attendingFlag:boolean,
     fees:PaymentCurrencyAmount,

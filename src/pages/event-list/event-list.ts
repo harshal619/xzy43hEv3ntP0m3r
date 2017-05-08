@@ -31,7 +31,7 @@ export class EventList {
     eventLocation: string,
     eventCity:string,
 
-    agent: string,
+    agentID: string,
     categoryID:string,
     attendingFlag:boolean,
     fees:PaymentCurrencyAmount,
@@ -39,6 +39,10 @@ export class EventList {
 
   }[] = [];
 
+
+    private singleEvent = {eventId: "", title: "",agentID: "",eventDate: "", 
+  eventTime: "",eventLocation: "",eventCity:"",
+  categoryID:"",attendingFlag:false,fees:0.00,userId:""}
 
   eventsFirebase : FirebaseListObservable<any[]>;
 
@@ -64,47 +68,47 @@ export class EventList {
 
   ionViewCanEnter(){
 
+    // fetch values from firebase database...
+        this.eventsFirebase.subscribe((_items)=> {
+            // this.events = [];
+            _items.forEach(item => {
 
-    // this.eventsFirebase.subscribe((_items)=> {
-    //         this.events = [];
-    //         _items.forEach(item => {
-    //             var tempEventId=item.eventID;
-    //             var tempAgentId=item.agentId;
-    //             var tempEventTitle=item.eventTitle;
-    //             this.events.push(item);                
-    //         })
-    //     });  
+                this.singleEvent.eventId=item.eventID;
+                this.singleEvent.agentID=item.agentID;
+                this.singleEvent.title=item.title;
+                this.singleEvent.eventDate=item.eventDate;
+                this.singleEvent.eventTime=item.eventTime;
+                this.singleEvent.eventLocation=item.eventLocation;
+                this.singleEvent.eventCity=item.eventCity;
+                this.singleEvent.categoryID=item.eventCategoryID;
+                this.singleEvent.attendingFlag=item.eventAttendingFlag;
+                this.singleEvent.fees=item.eventFees;
+                this.singleEvent.userId=item.eventUserId;
+                
+                this.events.push(this.singleEvent);                
+            })
+        });  
 
-    let env = this;
-    NativeStorage.getItem('user')
-    .then(function (data){
-      env.userModel = {
-        name: data.name,
-        email: data.email,
-        picture: data.picture
-      };
-    }, function(error){
-      console.log(error);
-    });
+// ****code commented by roshan**********************
+    // let env = this;
+    // NativeStorage.getItem('user')
+    // .then(function (data){
+    //   env.userModel = {
+    //     name: data.name,
+    //     email: data.email,
+    //     picture: data.picture
+    //   };
+    // }, function(error){
+    //   console.log(error);
+    // });
 
-    this.storage.get('events').then((val) => {
-         var storedEvents = JSON.parse(val);
-         if(storedEvents != null){
-          env.eventService.setEvents(storedEvents);
-          env.events = this.eventService.getEvents();
-         }
-       })
-  }
-
-  doGoogleLogout(){
-    let nav = this.navCtrl;
-    this.googlePlus.logout()
-    .then(function (response) {
-      NativeStorage.remove('user');
-      nav.push(HomePage);
-    },function (error) {
-      console.log(error);
-    })
+    // this.storage.get('events').then((val) => {
+    //      var storedEvents = JSON.parse(val);
+    //      if(storedEvents != null){
+    //       env.eventService.setEvents(storedEvents);
+    //       env.events = this.eventService.getEvents();
+    //      }
+    //    })
   }
 
   addEvent(){
