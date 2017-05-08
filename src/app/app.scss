@@ -69,3 +69,24 @@
 //     backface-visibility: hidden!important;
 //     transition: all .1s ease-out!important;
 // }
+
+.list .item {
+    border: none;
+    text-align: left;
+}
+
+.item {
+    font-size: 14px;
+    width: 100%;
+}
+
+.stable-bg {
+  background-color: #E0E0E0 !important; }
+
+.menuListItem{
+    position: relative;
+    z-index: 2;
+    padding: 5px 49px 5px 16px;
+    border: none;
+    background-color: #fff;
+}
