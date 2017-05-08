@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import {AngularFireDatabase,FirebaseListObservable} from 'angularfire2/database';
 
+import { AlertController } from 'ionic-angular';
 @Component({
   selector: 'page-agentDetail',
   templateUrl: 'agentDetail.html'
@@ -13,7 +14,7 @@ export class AgentDetailPage {
   agentName=String;
   items : FirebaseListObservable<any[]>;
 
-  constructor(public navCtrl: NavController, angFire: AngularFireDatabase) {
+  constructor(public navCtrl: NavController, angFire: AngularFireDatabase,public alertCtrl: AlertController) {
       this.items = angFire.list("/Tables/Agents");    
 
       this.agentName=null;
@@ -29,5 +30,12 @@ export class AgentDetailPage {
          agentID: agentId,
          agentName:agentName,
    });
+
+   let alert = this.alertCtrl.create({
+      title: 'Alert!',
+      subTitle: 'New Agent Added!',
+      buttons: ['OK']
+    });
+    alert.present();
   };
 }

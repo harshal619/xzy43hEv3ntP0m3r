@@ -26,32 +26,29 @@
     <ion-card-title>
       {{event.title}}
       </ion-card-title>
-    <p>
-      {{event.agentID}}
-    </p>
-  </ion-card-content>
 
-  <ion-row no-padding>
-      <ion-col>
-        <button ion-button clear small color="danger" icon-left>
-          <ion-icon name='thumbs-up'></ion-icon>
-          Going
-        </button>
+      
+  <ion-row class="eventTileInfoRowCss">
+      <ion-col class="locationText">
+      {{event.eventDate}}
       </ion-col>
-      <ion-col text-center>
-        <button ion-button clear small color="danger" icon-left>
-          <ion-icon name='chatbubbles'></ion-icon>
-          Maybe
-        </button>
+      
+    </ion-row>
+    <ion-row class="eventTileInfoRowCss">
+      <ion-col text-left class="locationText">
+        
+      {{event.eventLocation}} , {{event.eventCity}}
+    
       </ion-col>
       <ion-col text-right>
-        <button ion-button clear small color="danger" icon-left>
-          <ion-icon name='thumbs-down'></ion-icon>
-          Can't Go'
+        <button class="iconButtonCard" ion-button clear small color="danger" icon-left>
+          <ion-icon name='thumbs-up'></ion-icon>
         </button>
       </ion-col>
     </ion-row>
+  </ion-card-content>
 </ion-card>
+
 
   <ion-fab right bottom>
     <button ion-fab color="#66ccff" (click)="addEvent()"><ion-icon name="add"></ion-icon></button>
