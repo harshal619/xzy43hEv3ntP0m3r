@@ -1,11 +1,11 @@
-<ion-menu side="left" [content]="content">
+<ion-menu side="left" [content]="content" class="stable-bg">
     <ion-header class="expanded">
             <img src={{userModel.picture}} class="avatar motion spin fade">
             <div class="menu-bottom">
                 {{userModel.name}}
             </div>
     </ion-header>
-    <ion-content>
+    <ion-content class="stable-bg">
         <!--<div class="card list">
             <div class="username">
                 User Name
@@ -15,17 +15,21 @@
             </div>
         </div>-->
       
-        <ion-list>
-            <ion-item (click)="go_to_home()" menuClose>
+        <ion-list class="stable-bg">
+            <ion-item no-lines class="menuListItem stable-bg" nav-clear menu-close (click)="go_to_home()" menuClose>
+                <ion-icon name="albums" item-left></ion-icon>
                 Events
             </ion-item>
-            <ion-item (click)="go_to_setting()" menuClose>
+            <ion-item no-lines class="menuListItem stable-bg" (click)="go_to_setting()" menuClose>
+                <ion-icon name="settings" item-left></ion-icon>
                 Settings
             </ion-item>
-            <ion-item (click)="go_to_about()" menuClose>
+            <ion-item no-lines class="menuListItem stable-bg" (click)="go_to_about()" menuClose>
+                <ion-icon name="information-circle" item-left></ion-icon>
                 About
             </ion-item>
-            <ion-item (click)="go_to_logout()" menuClose>
+            <ion-item no-lines class="menuListItem stable-bg" (click)="go_to_logout()" menuClose>
+                <ion-icon name="log-out" item-left></ion-icon>
                 Log Out
             </ion-item>
         </ion-list>
