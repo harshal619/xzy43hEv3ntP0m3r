@@ -37,11 +37,6 @@ export class AddEventPage {
   categories:{ID:string,Name:string}[]=[];
 
    
-
-  constructor(public navCtrl: NavController, public navParams: NavParams,public EventService: EventService,
-  public storage: Storage,public angFire: AngularFireDatabase,public alertCtrl: AlertController) {
-    
-
   tempRef; 
   address; 
   placesService:any;
@@ -49,7 +44,8 @@ export class AddEventPage {
   placedetails: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public EventService: EventService,
-  public storage: Storage,angFire: AngularFireDatabase,public alertCtrl: AlertController, public modalCtrl: ModalController) {
+  public storage: Storage,public angFire: AngularFireDatabase,public alertCtrl: AlertController,public modalCtrl: ModalController) {
+    
     this.address = {
       place: ''
     };
