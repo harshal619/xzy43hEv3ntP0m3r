@@ -23,6 +23,7 @@ import {AngularFireModule} from 'angularfire2';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { IonicStorageModule } from '@ionic/storage';
+import { GoogleMap, GoogleMapsEvent, GoogleMapsLatLng } from 'ionic-native';
 
 // import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
 
