@@ -27,7 +27,7 @@ export class AddEventPage {
 }[] = [];
 
   private events = {eventId: "", title: "",agentID: "",eventDate: "", 
-  eventTime: "",eventLocation: "",eventCity:"",
+  eventTime: "",eventLocation: "",eventCity:"",photoUrl:"",
   categoryID:"",attendingFlag:false,fees:0.00,userId:""};
  
  
@@ -47,7 +47,8 @@ export class AddEventPage {
   public storage: Storage,public angFire: AngularFireDatabase,public alertCtrl: AlertController,public modalCtrl: ModalController) {
     
     this.address = {
-      place: ''
+      place: '',
+      photoUrl: ''
     };
 
     // this.eventsFirebaseDetail = angFire.list("/Tables/Events");   
@@ -76,9 +77,10 @@ export class AddEventPage {
     this.events.agentID = value.agentName;
     this.events.eventDate = value.eventDate;
     this.events.eventTime = value.eventTime;
-    
+    this.events.photoUrl = this.address.photoUrl;
+
     this.events.attendingFlag =false;
-    this.events.eventCity=value.eventCity;
+    // this.events.eventCity=value.eventCity;
     this.events.fees=0.00;
     this.events.categoryID=value.eventCategory;
     this.events.userId="";
@@ -156,13 +158,15 @@ export class AddEventPage {
     let modal = this.modalCtrl.create(AutocompletePage);
     let me = this;
     modal.onDidDismiss(data => {
-      this.address.place = data;
+      this.address.place = data.place;
+      this.address.photoUrl = data.photoUrl;
     });
     modal.present();
   }
 
   private reset() {
         this.address.place = '';
+        this.address.photoUrl = '';
         this.address.set = false;
     }
 

@@ -77,6 +77,7 @@ export class EventList {
                   eventTime:item.eventTime,
                   eventLocation:item.eventLocation,
                   eventCity:item.eventCity,
+                  photoUrl:item.photoUrl,
                   categoryID:item.eventCategoryID,
                   attendingFlag:item.eventAttendingFlag,
                   fees:item.eventFees,

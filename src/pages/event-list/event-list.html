@@ -21,7 +21,7 @@
 <ion-content padding>
  
   <ion-card *ngFor="let event of events">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/8/86/Victoria_Terminus%2C_Mumbai.jpg"/>
+  <img src={{event.photoUrl}}/>
   <ion-card-content>
     <ion-card-title>
       {{event.title}}

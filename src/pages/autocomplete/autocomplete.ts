@@ -52,7 +52,8 @@ export class AutocompletePage {
             });
             env.map.setCenter(place.geometry.location);
             marker.setMap(env.map);
-            this.viewCtrl.dismiss({place: item.place, photoUrl: url});
+            env.viewCtrl.dismiss({place: item.place, photoUrl: url});
+            // env.viewCtrl.dismiss(item.place);
           }
         });
   }
