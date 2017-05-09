@@ -1,14 +1,40 @@
 <ion-header>
   <ion-navbar>
     <ion-title>Filters</ion-title>
+    <ion-buttons end>
+        <button ion-button icon-only (click)="closeModal()">
+            <ion-icon name="close"></ion-icon>
+        </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 <ion-content padding class="settingsPage">
   <ion-list>
-    <ion-item (click)="cityClick()">City</ion-item>
-    <ion-item (click)="categoryClick()">Category</ion-item>
-    <ion-item (click)="budgetClick()">Budget</ion-item>
+      <ion-item (click)="locationClick()">
+        <h2>Location</h2>
+        <h3></h3>
+    </ion-item>
+     <ion-item (click)="categoryClick()">
+        <h2>Category</h2>
+        <h3></h3>
+    </ion-item>
+     <ion-item (click)="dateClick()">
+        <h2>Date</h2>
+        <h3></h3>
+    </ion-item>
   </ion-list>
+
+
+  <ion-list id="categoryListID" ng-hide="categoryHide">
+      <ion-item class="text" *ngFor="let item of categories">
+    {{item.value}}
+  </ion-item>
+  </ion-list>
+
   
- 
+  <ion-list id="locationListID">
+      <ion-item class="text" *ngFor="let item of locationList">
+    {{item.value}}
+  </ion-item>
+  </ion-list>
 </ion-content>

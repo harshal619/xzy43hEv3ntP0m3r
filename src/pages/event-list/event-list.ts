@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams ,ModalController } from 'ionic-angular';
 import { UserModel } from './user.model';
 import { NativeStorage } from 'ionic-native';
 import { HomePage } from '../home/home';
@@ -44,7 +44,8 @@ export class EventList {
   eventsFirebase : FirebaseListObservable<any[]>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,private eventService: EventService,
-   userModel: UserModel, public googlePlus: GooglePlus, public storage: Storage,angFire: AngularFireDatabase) {
+   userModel: UserModel, public googlePlus: GooglePlus, public storage: Storage,angFire: AngularFireDatabase,
+   public modalCtrl :ModalController) {
   
 
       this.eventsFirebase = angFire.list("/Tables/Events");
@@ -72,7 +73,7 @@ export class EventList {
                 _items.forEach(item => {
 
                 var jsonEvent={
-                  eventId:item.eventID,
+                  eventId:item.eventId,
                   agentID:item.agentID,
                   title:item.title,
                   eventDate:item.eventDate,
@@ -80,10 +81,10 @@ export class EventList {
                   eventLocation:item.eventLocation,
                   eventCity:item.eventCity,
                   photoUrl:item.photoUrl,
-                  categoryID:item.eventCategoryID,
-                  attendingFlag:item.eventAttendingFlag,
-                  fees:item.eventFees,
-                  userId:item.eventUserId
+                  categoryID:item.categoryID,
+                  attendingFlag:item.attendingFlag,
+                  fees:item.fees,
+                  userId:item.userId
                 };
                 
                 
@@ -120,7 +121,13 @@ export class EventList {
     nav.push(AddEventPage);
   }
   filterClick(){
+    let modal= this.modalCtrl.create(eventFilters,this.events);
     
-    this.navCtrl.push(eventFilters);  
+    modal.onDidDismiss((data)=>{
+      console.log("dismiss");
+    })
+    
+    modal.present();
+    // this.navCtrl.push(eventFilters,this.events);  
   }
 }

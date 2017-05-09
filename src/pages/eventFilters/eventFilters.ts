@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams ,ViewController} from 'ionic-angular';
 @Component({
   selector: 'page-eventFilters',
   templateUrl: 'eventFilters.html'
@@ -7,22 +7,49 @@ import { NavController } from 'ionic-angular';
 
 
 export class eventFilters {
-  constructor(public navCtrl: NavController) {
+  
+  categories:{key:string,value:string}[]=[];
+  locationList:{key:string,value:string}[]=[];
+    
+    categoryHide:boolean;
+  constructor(public navCtrl: NavController, public navParams:NavParams,public viewCtrl:ViewController) {
 
   };
+ionViewDidLoad(){
+    console.log(this.navParams.data);
+
+    this.navParams.data.forEach(element => {
+        
+        var categoryID = element.categoryID;
+        var location = element.eventLocation;
+
+        this.categories.push({key:categoryID,value:"UG/MBA/MS"});
+        this.locationList.push({key:location,value:location});
+    });
+};
 
 
-cityClick(){   
+
+locationClick(){   
+    this.locationList;
+
+    // var list= document.getElementById("categoryListID");
+    // list.removeAttribute(hidden);
+    alert("city");
     
-  alert("city");
+    this.categoryHide=false;
 };
 
 categoryClick(){
-  alert("category"); 
+    this.categoryHide=true;
+    alert("category"); 
 };
 
-budgetClick(){
-  alert("budget");
+dateClick(){
+    alert("date");
 };
-  
+
+closeModal(){
+    this.viewCtrl.dismiss();
+};  
 }

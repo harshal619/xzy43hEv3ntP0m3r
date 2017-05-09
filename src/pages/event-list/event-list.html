@@ -12,6 +12,12 @@
     <button ion-button menuToggle>
        <ion-icon name="menu"></ion-icon>
     </button>
+
+    <ion-buttons end>
+        <button ion-button icon-only (click)="filterClick()">
+            <ion-icon name="funnel"></ion-icon>
+        </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
@@ -19,11 +25,6 @@
 
 <ion-content padding>
  
-   <ion-segment color="primary">
-        <ion-segment-button (click)="filterClick()">
-            Filter
-        </ion-segment-button>
-  </ion-segment>
 
   <ion-card *ngFor="let event of events">
   <img src={{event.photoUrl}}/>
