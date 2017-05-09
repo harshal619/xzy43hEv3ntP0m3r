@@ -12,6 +12,7 @@ import { AboutPage } from '../pages/about/about';
 import { SettingPage } from '../pages/setting/setting';
 import { AgentPage } from '../pages/agent/agent';
 import { AgentDetailPage } from '../pages/agentDetail/agentDetail';
+import { AutocompletePage } from '../pages/autocomplete/autocomplete';
 
 import { EventService } from '../services/events.service';
 import { UserModel } from '../pages/event-list/user.model';
@@ -65,7 +66,8 @@ export const config={
     AboutPage,
     SettingPage,
     AgentPage,
-    AgentDetailPage
+    AgentDetailPage,
+    AutocompletePage
   ],
   imports: [
     BrowserModule,
@@ -97,7 +99,8 @@ export const config={
     AboutPage,
     SettingPage,
     AgentPage,
-    AgentDetailPage
+    AgentDetailPage,
+    AutocompletePage
   ],
   providers: [
     StatusBar,

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { EventService } from '../../services/events.service';
 import { NativeStorage } from 'ionic-native';
 import { Storage } from '@ionic/storage';
@@ -7,6 +7,7 @@ import { AlertController } from 'ionic-angular';
 
 import {AngularFireDatabase,FirebaseListObservable} from 'angularfire2/database';
 import * as firebase from 'firebase';
+import {AutocompletePage} from '../autocomplete/autocomplete';
 
 /**
  * Generated class for the AddEventPage page.
@@ -34,11 +35,27 @@ export class AddEventPage {
   primaryKeysFirebase : FirebaseListObservable<any[]>;
 
   categories:{ID:string,Name:string}[]=[];
+<<<<<<< HEAD
    
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public EventService: EventService,
   public storage: Storage,public angFire: AngularFireDatabase,public alertCtrl: AlertController) {
     
+=======
+  tempRef; 
+  address; 
+  placesService:any;
+  map: any;
+  placedetails: any;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams,public EventService: EventService,
+  public storage: Storage,angFire: AngularFireDatabase,public alertCtrl: AlertController, public modalCtrl: ModalController) {
+    this.address = {
+      place: ''
+    };
+
+    this.eventsFirebaseDetail = angFire.list("/Tables/Events");   
+>>>>>>> a29e295dc63c92e8de02bd113948e6cbb7a44a84
     this.agentsFirebase = angFire.list("/Tables/Agents"); 
     this.primaryKeysFirebase = angFire.list("/Tables/PrimaryKeys"); 
 
@@ -125,5 +142,71 @@ export class AddEventPage {
     });
 
   }
+
+  showAddressModal(){
+    // this.reset();
+    //     // show modal|
+    //     let modal = this.modalCtrl.create(ModalAutocompleteItems);
+    //     modal.onDidDismiss(data => {
+    //         console.log('page > modal dismissed > data > ', data);
+    //         if(data){
+    //             this.address.place = data.description;
+    //             // get details
+    //             this.getPlaceDetail(data.place_id);
+    //         }                
+    //     })
+    //     modal.present();
+
+    let modal = this.modalCtrl.create(AutocompletePage);
+    let me = this;
+    modal.onDidDismiss(data => {
+      this.address.place = data;
+    });
+    modal.present();
+  }
+
+  private reset() {
+        this.address.place = '';
+        this.address.set = false;
+    }
+
+    private getPlaceDetail(place_id:string):void {
+        var self = this;
+        var request = {
+            placeId: place_id
+        };
+        this.placesService = new google.maps.places.PlacesService(this.map);
+        this.placesService.getDetails(request, callback);
+        function callback(place, status) {
+            if (status == google.maps.places.PlacesServiceStatus.OK) {
+                console.log('page > getPlaceDetail > place > ', place);
+                // set full address
+                self.placedetails.address = place.formatted_address;
+                self.placedetails.lat = place.geometry.location.lat();
+                self.placedetails.lng = place.geometry.location.lng();
+                for (var i = 0; i < place.address_components.length; i++) {
+                    let addressType = place.address_components[i].types[0];
+                    let values = {
+                        short_name: place.address_components[i]['short_name'],
+                        long_name: place.address_components[i]['long_name']
+                    }
+                    if(self.placedetails.components[addressType]) {
+                        self.placedetails.components[addressType].set = true;
+                        self.placedetails.components[addressType].short = place.address_components[i]['short_name'];
+                        self.placedetails.components[addressType].long = place.address_components[i]['long_name'];
+                    }                                     
+                }                  
+                // set place in map
+                // self.map.setCenter(place.geometry.location);
+                // self.createMapMarker(place);
+                // populate
+                self.address.set = true;
+                // console.log('page > getPlaceDetail > details > ', self.placedetails);
+            }else{
+                console.log('page > getPlaceDetail > status > ', status);
+            }
+        }
+    }
+
 
 }
