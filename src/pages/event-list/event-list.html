@@ -17,7 +17,13 @@
 
 </ion-header>
 
-
+<div>
+  <ion-segment [(ngModel)]="kmart" color="primary">
+        <ion-segment-button>
+            Filter
+        </ion-segment-button>
+  </ion-segment>
+</div>
 <ion-content padding>
  
   <ion-card *ngFor="let event of events">
