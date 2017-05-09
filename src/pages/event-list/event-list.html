@@ -9,7 +9,6 @@
   <ion-navbar>
     
     <ion-title>Events</ion-title>
-    <!--<ion-title>{{userModel.name}}</ion-title>-->
     <button ion-button menuToggle>
        <ion-icon name="menu"></ion-icon>
     </button>
@@ -17,15 +16,16 @@
 
 </ion-header>
 
-<div>
-  <ion-segment [(ngModel)]="kmart" color="primary">
-        <ion-segment-button>
+
+<ion-content padding>
+ 
+   <ion-segment color="primary">
+        <ion-segment-button (click)="filterClick()">
             Filter
         </ion-segment-button>
   </ion-segment>
-</div>
-<ion-content padding>
- 
+  <ion-searchbar (ionInput)="getEvents($event)"></ion-searchbar>
+
   <ion-card *ngFor="let event of events">
   <img src="https://upload.wikimedia.org/wikipedia/commons/8/86/Victoria_Terminus%2C_Mumbai.jpg"/>
   <ion-card-content>

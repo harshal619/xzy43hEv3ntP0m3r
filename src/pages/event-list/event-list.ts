@@ -10,6 +10,8 @@ import { Storage } from '@ionic/storage';
 
 import {AngularFireDatabase,FirebaseListObservable} from 'angularfire2/database';
 
+
+import { eventFilters } from '../eventFilters/eventFilters';
 /**
  * Generated class for the EventList page.
  *
@@ -116,5 +118,11 @@ export class EventList {
     let nav = this.navCtrl;
     nav.push(AddEventPage);
   }
-
+  getEvents(event){
+    alert("event search");
+  }
+  filterClick(){
+    
+    this.navCtrl.push(eventFilters);  
+  }
 }
