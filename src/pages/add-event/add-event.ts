@@ -35,13 +35,13 @@ export class AddEventPage {
   primaryKeysFirebase : FirebaseListObservable<any[]>;
 
   categories:{ID:string,Name:string}[]=[];
-<<<<<<< HEAD
+
    
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public EventService: EventService,
   public storage: Storage,public angFire: AngularFireDatabase,public alertCtrl: AlertController) {
     
-=======
+
   tempRef; 
   address; 
   placesService:any;
@@ -54,8 +54,8 @@ export class AddEventPage {
       place: ''
     };
 
-    this.eventsFirebaseDetail = angFire.list("/Tables/Events");   
->>>>>>> a29e295dc63c92e8de02bd113948e6cbb7a44a84
+    // this.eventsFirebaseDetail = angFire.list("/Tables/Events");   
+
     this.agentsFirebase = angFire.list("/Tables/Agents"); 
     this.primaryKeysFirebase = angFire.list("/Tables/PrimaryKeys"); 
 
