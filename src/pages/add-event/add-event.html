@@ -31,13 +31,13 @@
 </ion-select>
 
     </ion-item>
-    <ion-item>
+    <!--<ion-item>
       <ion-label floating>Event Location</ion-label>
       <ion-input type="text" name="eventLocation" ngModel required></ion-input>
-    </ion-item>
+    </ion-item>-->
     <ion-item>
-      <ion-label floating>Event City</ion-label>
-      <ion-input type="text" name="eventCity" ngModel required (click)="showAddressModal()" [(ngModel)]="address.place"></ion-input>
+      <ion-label floating>Event Location</ion-label>
+      <ion-input type="text" name="eventLocation" ngModel required (click)="showAddressModal()" [(ngModel)]="address.place"></ion-input>
     </ion-item>
    
     <ion-item class="paddingIonItem">

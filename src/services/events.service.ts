@@ -15,12 +15,13 @@ import { NativeStorage } from 'ionic-native';
 })
 export class EventService{
     private events:{
-      eventId: string,
+    eventId: string,
     title: string,
     eventDate: string,
     eventTime: string,
     eventLocation: string,
     eventCity:string,
+    photoUrl:string,
 
     agentID: string,
     categoryID:string,
@@ -35,6 +36,7 @@ export class EventService{
     eventTime: string,
     eventLocation: string,
     eventCity:string,
+    photoUrl:string,
 
     agentID: string,
     categoryID:string,

@@ -43,17 +43,17 @@ export class AutocompletePage {
           placeId: item.placeId
         }, function(place, status) {
           if (status === google.maps.places.PlacesServiceStatus.OK) {
-            var url = place.photos[0].getUrl({'maxWidth': 800, 'maxHeight': 800});
+            if(place.photos != undefined){
+              var url = place.photos[0].getUrl({'maxWidth': 800, 'maxHeight': 800});
+            }
             var marker = new google.maps.Marker({
               map: env.map, 
               position: place.geometry.location
             });
-            google.maps.event.addListener(marker, 'click', function() {
-              this.infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
-                'Place ID: ' + place.place_id + '<br>' +
-                place.formatted_address + '</div>');
-              this.infowindow.open(env.map, this);
-            });
+            env.map.setCenter(place.geometry.location);
+            marker.setMap(env.map);
+            env.viewCtrl.dismiss({place: item.place, photoUrl: url});
+            // env.viewCtrl.dismiss(item.place);
           }
         });
   }
