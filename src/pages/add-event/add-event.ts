@@ -30,19 +30,17 @@ export class AddEventPage {
   categoryID:"",attendingFlag:false,fees:0.00,userId:""};
  
  
-  eventsFirebaseDetail : FirebaseListObservable<any[]>;
   agentsFirebase : FirebaseListObservable<any[]>;
-
+  primaryKeysFirebase : FirebaseListObservable<any[]>;
 
   categories:{ID:string,Name:string}[]=[];
-  tempRef;  
+   
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public EventService: EventService,
-  public storage: Storage,angFire: AngularFireDatabase,public alertCtrl: AlertController) {
+  public storage: Storage,public angFire: AngularFireDatabase,public alertCtrl: AlertController) {
     
-    this.eventsFirebaseDetail = angFire.list("/Tables/Events");   
     this.agentsFirebase = angFire.list("/Tables/Agents"); 
-    
+    this.primaryKeysFirebase = angFire.list("/Tables/PrimaryKeys"); 
 
     this.categories.push({ID:"C1",Name:"UG"});
     this.categories.push({ID:"C2",Name:"UG/MBA/MS"});
@@ -95,27 +93,37 @@ export class AddEventPage {
 
 
     var myRef=firebase.database().ref();
-    var eventsRef=myRef.child("/Tables/Events");
     
-    var length;
-    this.eventsFirebaseDetail.subscribe((items)=>{
-        length=items.length;
-        length=length+1;
-        this.events.eventId='E'+length;
-    });
-// ******line to add into dataBase
-     
-     eventsRef.child('E'+length).set(this.events);
-    // ****************add event in firebase****************************
-    
-    // this.eventsFirebaseDetail.push(this.events);
 
-    let alert = this.alertCtrl.create({
-      title: 'Alert!',
-      subTitle: 'New Event Added!',
-      buttons: ['OK']
+    var key;
+    var that=this;
+    firebase.database().ref('Tables/PrimaryKeys')
+    .orderByChild('TableName')
+    .startAt('Events')
+    .endAt('Events')
+    .once('value', function (snapshot) {
+        console.log(snapshot.val().Events.NextEventID);
+        key=snapshot.val().Events.NextEventID;
+
+        var nextKey=parseInt(key)+1;
+        var primaryKeysRef=myRef.child("/Tables/PrimaryKeys");
+        primaryKeysRef.child('Events').set({TableName:'Events',NextEventID:nextKey});
+
+    // ******line to add into dataBase
+        
+        var eventsRef=myRef.child("/Tables/Events");
+        var newKey="E"+key;
+        that.events.eventId=newKey;
+        eventsRef.child('E'+key).set(that.events);
+
+            let alert = that.alertCtrl.create({
+          title: 'Alert!',
+          subTitle: 'New Event Added!',
+          buttons: ['OK']
+        });
+        alert.present();
     });
-    alert.present();
+
   }
 
 }
