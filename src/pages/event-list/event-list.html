@@ -24,7 +24,6 @@
             Filter
         </ion-segment-button>
   </ion-segment>
-  <ion-searchbar (ionInput)="getEvents($event)"></ion-searchbar>
 
   <ion-card *ngFor="let event of events">
   <img src={{event.photoUrl}}/>

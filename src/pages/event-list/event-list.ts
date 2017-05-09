@@ -119,9 +119,6 @@ export class EventList {
     let nav = this.navCtrl;
     nav.push(AddEventPage);
   }
-  getEvents(event){
-    alert("event search");
-  }
   filterClick(){
     
     this.navCtrl.push(eventFilters);  
