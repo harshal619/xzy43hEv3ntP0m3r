@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
     <ion-title>Filters</ion-title>
-    <ion-buttons >
+    <ion-buttons end>
         <button ion-button icon-only (click)="closeModal()">
             <ion-icon name="close"></ion-icon>
         </button>
@@ -9,15 +9,13 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding class="settingsPage">
-  <ion-list id="categoryListID" ng-hide="categoryHide">
+  <ion-list>
       <ion-item class="text" *ngFor="let item of detailFilterArray">
-    <!--{{item.value}}-->
-  
-
-  <ion-label>{{item.value}}</ion-label>
-  <ion-checkbox color="primary" checked={{item.selected}}></ion-checkbox>
-  </ion-item>
+        <ion-label>{{item.value}}</ion-label>
+        <ion-checkbox color="primary" checked="false" [(ngModel)]="item.selected"></ion-checkbox>
+      </ion-item>
   </ion-list>
 
 <button ion-button block (click)="applyFilterDetail()">Apply</button>
+
 </ion-content>

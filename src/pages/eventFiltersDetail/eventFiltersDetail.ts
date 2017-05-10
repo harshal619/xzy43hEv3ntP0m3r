@@ -15,18 +15,18 @@ export class eventFiltersDetail {
   };
 ionViewDidLoad(){
     console.log(this.navParams.data);
+    this.detailFilterArray=this.navParams.data;
+};
 
-this.detailFilterArray=this.navParams.data;
-    // this.navParams.data.forEach(element => {
-        
-    //     this.detailFilterArray.push({key:categoryID,value:"UG/MBA/MS"});
-        
-    // });
-};
 closeModal(){
-    this.viewCtrl.dismiss();
+    this.navParams.data=this.detailFilterArray;
+    this.viewCtrl.dismiss(this.navParams.data);
 };  
+
 applyFilterDetail(){
-  this.viewCtrl.dismiss();
+    
+    this.navParams.data=this.detailFilterArray;
+  this.viewCtrl.dismiss(this.navParams.data);
 };
+
 }

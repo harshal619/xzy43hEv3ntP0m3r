@@ -24,4 +24,14 @@
     </ion-item>
   </ion-list>
 
+<!--<ion-list>
+      <ion-item class="text" *ngFor="let item of filterArray">
+        <ion-label>{{item.value}}</ion-label>
+        <ion-checkbox color="primary" checked={{item.selected}}></ion-checkbox>
+      </ion-item>
+  </ion-list>-->
+
+
+  
+<button ion-button block (click)="applyFilter()">Apply</button>
 </ion-content>

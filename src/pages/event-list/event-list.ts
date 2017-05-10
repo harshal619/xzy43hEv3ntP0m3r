@@ -41,6 +41,25 @@ export class EventList {
 
   }[] = [];
 
+  backupEvents:{
+
+  eventId: string,
+    title: string,
+    eventDate: string,
+    eventTime: string,
+    eventLocation: string,
+    eventCity:string,
+
+    agentID: string,
+    categoryID:string,
+    attendingFlag:boolean,
+    fees:PaymentCurrencyAmount,
+    userId:string,
+
+  }[] = [];
+
+  listFilters:{}[]=[];
+
   eventsFirebase : FirebaseListObservable<any[]>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,private eventService: EventService,
@@ -125,6 +144,15 @@ export class EventList {
     
     modal.onDidDismiss((data)=>{
       console.log("dismiss");
+      debugger;
+      data.forEach(element => {
+        
+        var column = element.column;
+        var value = element.value;
+        
+        this.listFilters.push({"column":column,"value":value});
+        
+    });
     })
     
     modal.present();
