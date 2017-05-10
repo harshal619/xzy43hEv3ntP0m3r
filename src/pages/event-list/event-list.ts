@@ -9,7 +9,7 @@ import { GooglePlus } from '@ionic-native/google-plus';
 import { Storage } from '@ionic/storage';
 
 import {AngularFireDatabase,FirebaseListObservable} from 'angularfire2/database';
-
+import * as firebase from 'firebase';
 
 import { eventFilters } from '../eventFilters/eventFilters';
 /**
@@ -26,48 +26,25 @@ import { eventFilters } from '../eventFilters/eventFilters';
 export class EventList {
   userModel: UserModel = new UserModel();
   events:{
-    eventId: string,
-    title: string,
-    eventDate: string,
-    eventTime: string,
-    eventLocation: string,
-    eventCity:string,
-
-    agentID: string,
-    categoryID:string,
-    attendingFlag:boolean,
-    fees:PaymentCurrencyAmount,
-    userId:string,
-
+    eventId: string,title: string,eventDate: string,eventTime: string,eventLocation: string,eventCity:string,
+    agentID: string,categoryID:string,attendingFlag:boolean,fees:PaymentCurrencyAmount,userId:string,
   }[] = [];
 
   backupEvents:{
-
-  eventId: string,
-    title: string,
-    eventDate: string,
-    eventTime: string,
-    eventLocation: string,
-    eventCity:string,
-
-    agentID: string,
-    categoryID:string,
-    attendingFlag:boolean,
-    fees:PaymentCurrencyAmount,
-    userId:string,
-
+    eventId: string,title: string,eventDate: string,eventTime: string,eventLocation: string,eventCity:string,
+    agentID: string,categoryID:string,attendingFlag:boolean,fees:PaymentCurrencyAmount,userId:string,
   }[] = [];
 
   listFilters:{}[]=[];
-
-  eventsFirebase : FirebaseListObservable<any[]>;
-
+  emailId:string;
   constructor(public navCtrl: NavController, public navParams: NavParams,private eventService: EventService,
    userModel: UserModel, public googlePlus: GooglePlus, public storage: Storage,angFire: AngularFireDatabase,
    public modalCtrl :ModalController) {
   
-
-      this.eventsFirebase = angFire.list("/Tables/Events");
+    this.emailId=userModel.email;
+      // this.eventsFirebase = angFire.list("/Tables/Events");
+//  this.eventsFirebase;
+    
 }
 
   ionViewDidLoad() {
@@ -88,34 +65,24 @@ export class EventList {
     // fetch values from firebase database...
     var that=this;
     this.events=[];
-        this.eventsFirebase.subscribe((_items)=> {
-                _items.forEach(item => {
+    // alert(this.emailId);
+    // alert(this.userModel.email);
+    // alert(this.userModel1.email);
 
-                var jsonEvent={
-                  eventId:item.eventId,
-                  agentID:item.agentID,
-                  title:item.title,
-                  eventDate:item.eventDate,
-                  eventTime:item.eventTime,
-                  eventLocation:item.eventLocation,
-                  eventCity:item.eventCity,
-                  photoUrl:item.photoUrl,
-                  categoryID:item.categoryID,
-                  attendingFlag:item.attendingFlag,
-                  fees:item.fees,
-                  userId:item.userId
-                };
-                
-                
-                // this.eventService.addEvent(jsonEvent);
-                
-                this.events.push(jsonEvent) ;
-                
-                this.backupEvents=JSON.parse(JSON.stringify(this.events));
-            })
-        });  
+    firebase.database().ref('Tables/Events')
+    .orderByChild('userId')
+    .startAt('harshal.gmr@gmail.com')//emailId...
+    .endAt('harshal.gmr@gmail.com')
+    .once('value', function (snapshot) {
+        console.log(snapshot.val());
+        for(var key in snapshot.val()){
+          that.events.push(snapshot.val()[key]);
+        }
 
-// ****code commented by roshan**********************
+        that.backupEvents=JSON.parse(JSON.stringify(that.events));
+    });
+
+// // ****code commented by roshan**********************
     // let env = this;
     // NativeStorage.getItem('user')
     // .then(function (data){
