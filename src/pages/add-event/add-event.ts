@@ -4,6 +4,7 @@ import { EventService } from '../../services/events.service';
 import { NativeStorage } from 'ionic-native';
 import { Storage } from '@ionic/storage';
 import { AlertController } from 'ionic-angular';
+import { UserModel } from '../event-list/user.model';
 
 import {AngularFireDatabase,FirebaseListObservable} from 'angularfire2/database';
 import * as firebase from 'firebase';
@@ -44,7 +45,8 @@ export class AddEventPage {
   placedetails: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public EventService: EventService,
-  public storage: Storage,public angFire: AngularFireDatabase,public alertCtrl: AlertController,public modalCtrl: ModalController) {
+  public storage: Storage,public angFire: AngularFireDatabase,public alertCtrl: AlertController,public modalCtrl: ModalController,
+  public userModel:UserModel) {
     
     this.address = {
       place: '',
@@ -83,7 +85,7 @@ export class AddEventPage {
     // this.events.eventCity=value.eventCity;
     this.events.fees=0.00;
     this.events.categoryID=value.eventCategory;
-    this.events.userId="";
+    this.events.userId=this.userModel.email;
 
 
     // ********commented by roshan*****
