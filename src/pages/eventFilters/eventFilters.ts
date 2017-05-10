@@ -51,7 +51,7 @@ locationClick(){
         var selected = element.selected;
         var key = element.key;
         if(selected==true){
-            this.selectedValues.push({"column":"Location","value":key})
+            this.selectedValues.push({"column":"eventLocation","value":key})
         }
     });
     });
@@ -67,7 +67,7 @@ let modal= this.modalCtrl.create(eventFiltersDetail,this.categories);
         var selected = element.selected;
         var key = element.key;
         if(selected==true){
-            this.selectedValues.push({"column":"Category","value":key})
+            this.selectedValues.push({"column":"categoryID","value":key})
         }
     });
     })

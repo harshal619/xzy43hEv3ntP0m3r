@@ -2,9 +2,7 @@
   <ion-navbar>
     <ion-title>Filters</ion-title>
     <ion-buttons end>
-        <button ion-button icon-only (click)="closeModal()">
-            <ion-icon name="close"></ion-icon>
-        </button>
+        <button ion-button (click)="closeModal()">Clear</button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
@@ -23,15 +21,6 @@
         <h3></h3>
     </ion-item>
   </ion-list>
-
-<!--<ion-list>
-      <ion-item class="text" *ngFor="let item of filterArray">
-        <ion-label>{{item.value}}</ion-label>
-        <ion-checkbox color="primary" checked={{item.selected}}></ion-checkbox>
-      </ion-item>
-  </ion-list>-->
-
-
   
 <button ion-button block (click)="applyFilter()">Apply</button>
 </ion-content>

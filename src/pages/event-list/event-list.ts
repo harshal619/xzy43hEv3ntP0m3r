@@ -110,6 +110,8 @@ export class EventList {
                 // this.eventService.addEvent(jsonEvent);
                 
                 this.events.push(jsonEvent) ;
+                
+                this.backupEvents=JSON.parse(JSON.stringify(this.events));
             })
         });  
 
@@ -140,20 +142,68 @@ export class EventList {
     nav.push(AddEventPage);
   }
   filterClick(){
-    let modal= this.modalCtrl.create(eventFilters,this.events);
+    let modal= this.modalCtrl.create(eventFilters,this.backupEvents);
     
+    this.events=JSON.parse(JSON.stringify(this.backupEvents));
     modal.onDidDismiss((data)=>{
-      console.log("dismiss");
-      debugger;
-      data.forEach(element => {
+      if(data==undefined){
+          this.events=JSON.parse(JSON.stringify(this.backupEvents));
+      }else{
+        this.events=[];
+        var columnLocation=[];
+        var columnCategory=[];
+        var columnDate=[];
+        var tempEvents=[];
+        data.forEach(element => {
         
         var column = element.column;
         var value = element.value;
         
+        if(column=="eventLocation"){
+          columnLocation.push(value);
+        }else if(column=="categoryID"){
+          columnCategory.push(value);
+        }
         this.listFilters.push({"column":column,"value":value});
-        
+     });
+      
+      if(columnLocation!=[] && columnCategory!=[]){
+      columnLocation.forEach(item=>{
+            this.backupEvents.filter((test)=>{
+                if(test["eventLocation"]==item){
+                    tempEvents.push(test);
+                }
+            });
+      });
+
+      columnCategory.forEach(item=>{
+          tempEvents.filter((test)=>{
+              if(test["categoryID"]==item){
+                  this.events.push(test);
+              }
+          });
+      });
+      }else if(columnLocation==[] && columnCategory!=[]){
+
+        columnCategory.forEach(item=>{
+            this.backupEvents.filter((test)=>{
+                if(test["categoryID"]==item){
+                    this.events.push(test);
+                }
+            });
+        });
+    }else{
+columnLocation.forEach(item=>{
+            this.backupEvents.filter((test)=>{
+                if(test["eventLocation"]==item){
+                    this.events.push(test);
+                }
+            });
+        });
+
+    }
+      }
     });
-    })
     
     modal.present();
     // this.navCtrl.push(eventFilters,this.events);  
