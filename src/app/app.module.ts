@@ -14,6 +14,7 @@ import { AgentPage } from '../pages/agent/agent';
 import { AgentDetailPage } from '../pages/agentDetail/agentDetail';
 import { AutocompletePage } from '../pages/autocomplete/autocomplete';
 import { eventFilters } from '../pages/eventFilters/eventFilters';
+import { eventFiltersDetail } from '../pages/eventFiltersDetail/eventFiltersDetail';
 
 import { EventService } from '../services/events.service';
 import { UserModel } from '../pages/event-list/user.model';
@@ -70,7 +71,8 @@ export const config={
     AgentPage,
     AgentDetailPage,
     AutocompletePage,
-    eventFilters
+    eventFilters,
+    eventFiltersDetail
   ],
   imports: [
     BrowserModule,
@@ -104,7 +106,8 @@ export const config={
     AgentPage,
     AgentDetailPage,
     AutocompletePage,
-    eventFilters
+    eventFilters,
+    eventFiltersDetail
   ],
   providers: [
     StatusBar,

@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Filters</ion-title>
+    <ion-buttons end>
+        <button ion-button icon-only (click)="closeModal()">
+            <ion-icon name="close"></ion-icon>
+        </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content padding class="settingsPage">
+  <ion-list id="categoryListID" ng-hide="categoryHide">
+      <ion-item class="text" *ngFor="let item of categories">
+    {{item.value}}
+  </ion-item>
+  </ion-list>
+</ion-content>
