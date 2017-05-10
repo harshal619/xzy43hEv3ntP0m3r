@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams ,ViewController} from 'ionic-angular';
+import { NavController, NavParams ,ViewController,ModalController} from 'ionic-angular';
+
+import { eventFiltersDetail } from '../eventFiltersDetail/eventFiltersDetail';
+
 @Component({
   selector: 'page-eventFilters',
   templateUrl: 'eventFilters.html'
@@ -8,11 +11,12 @@ import { NavController, NavParams ,ViewController} from 'ionic-angular';
 
 export class eventFilters {
   
-  categories:{key:string,value:string}[]=[];
+  categories:{key:string,value:string,selected:boolean}[]=[];
   locationList:{key:string,value:string}[]=[];
     
     categoryHide:boolean;
-  constructor(public navCtrl: NavController, public navParams:NavParams,public viewCtrl:ViewController) {
+  constructor(public navCtrl: NavController, public navParams:NavParams,public viewCtrl:ViewController,
+  public modalCtrl:ModalController) {
 
   };
 ionViewDidLoad(){
@@ -23,7 +27,7 @@ ionViewDidLoad(){
         var categoryID = element.categoryID;
         var location = element.eventLocation;
 
-        this.categories.push({key:categoryID,value:"UG/MBA/MS"});
+        this.categories.push({key:categoryID,value:"UG/MBA/MS",selected:false});
         this.locationList.push({key:location,value:location});
     });
 };
@@ -31,13 +35,13 @@ ionViewDidLoad(){
 
 
 locationClick(){   
-    this.locationList;
-
-    // var list= document.getElementById("categoryListID");
-    // list.removeAttribute(hidden);
-    alert("city");
+       
+    let modal= this.modalCtrl.create(eventFiltersDetail,this.locationList);
     
-    this.categoryHide=false;
+    modal.onDidDismiss((data)=>{
+      console.log("dismiss");
+    })
+    modal.present();
 };
 
 categoryClick(){

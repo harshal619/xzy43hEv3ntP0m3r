@@ -10,8 +10,16 @@
 </ion-header>
 <ion-content padding class="settingsPage">
   <ion-list id="categoryListID" ng-hide="categoryHide">
-      <ion-item class="text" *ngFor="let item of categories">
-    {{item.value}}
+      <ion-item class="text" *ngFor="let item of detailFilterArray">
+    <!--{{item.value}}-->
+  
+
+  <ion-label>{{item.value}}</ion-label>
+  <ion-checkbox color="primary" checked={{item.selected}}></ion-checkbox>
   </ion-item>
   </ion-list>
+
+<button (click)="applyFilterDetail()">Apply
+</button>
+
 </ion-content>
