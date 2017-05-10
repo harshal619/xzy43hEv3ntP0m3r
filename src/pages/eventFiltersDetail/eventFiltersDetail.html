@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
     <ion-title>Filters</ion-title>
-    <ion-buttons end>
+    <ion-buttons >
         <button ion-button icon-only (click)="closeModal()">
             <ion-icon name="close"></ion-icon>
         </button>
@@ -19,7 +19,5 @@
   </ion-item>
   </ion-list>
 
-<button (click)="applyFilterDetail()">Apply
-</button>
-
+<button ion-button block (click)="applyFilterDetail()">Apply</button>
 </ion-content>
