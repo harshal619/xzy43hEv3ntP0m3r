@@ -38,10 +38,10 @@ export class EventList {
   listFilters:{}[]=[];
   emailId:string;
   constructor(public navCtrl: NavController, public navParams: NavParams,private eventService: EventService,
-   userModel: UserModel, public googlePlus: GooglePlus, public storage: Storage,angFire: AngularFireDatabase,
+   public userModel1: UserModel, public googlePlus: GooglePlus, public storage: Storage,angFire: AngularFireDatabase,
    public modalCtrl :ModalController) {
   
-    this.emailId=userModel.email;
+    this.emailId=userModel1.email;
       // this.eventsFirebase = angFire.list("/Tables/Events");
 //  this.eventsFirebase;
     
@@ -65,14 +65,14 @@ export class EventList {
     // fetch values from firebase database...
     var that=this;
     this.events=[];
-    // alert(this.emailId);
-    // alert(this.userModel.email);
+    
+    // alert(this.userModel.emailId);
     // alert(this.userModel1.email);
-
+    
     firebase.database().ref('Tables/Events')
     .orderByChild('userId')
-    .startAt('harshal.gmr@gmail.com')//emailId...
-    .endAt('harshal.gmr@gmail.com')
+    .startAt(this.emailId)//emailId...
+    .endAt(this.emailId)
     .once('value', function (snapshot) {
         console.log(snapshot.val());
         for(var key in snapshot.val()){
