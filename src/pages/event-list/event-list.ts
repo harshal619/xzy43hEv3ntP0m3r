@@ -59,6 +59,7 @@ export class EventList {
     // this.events = this.eventService.getEvents();
     // alert(JSON.stringify(this.events));
   }
+  
 
   ionViewCanEnter(){
 // alert("ionviecan enter");

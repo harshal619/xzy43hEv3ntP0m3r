@@ -12,6 +12,8 @@ page-event-list {
     padding-left: 0px;
     flex-grow: 3;
     vertical-align: -webkit-baseline-middle;
+    white-space: nowrap;
+    overflow: hidden;
 }
 .eventTileInfoRowCss{
     line-height: 0.5;
