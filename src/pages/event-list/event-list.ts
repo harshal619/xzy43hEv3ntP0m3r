@@ -59,7 +59,7 @@ export class EventList {
     // this.events = this.eventService.getEvents();
     // alert(JSON.stringify(this.events));
   }
-  
+
 
   ionViewCanEnter(){
 // alert("ionviecan enter");
@@ -175,5 +175,18 @@ columnLocation.forEach(item=>{
     
     modal.present();
     // this.navCtrl.push(eventFilters,this.events);  
+  }
+  addAttending(event){
+    var previousAttendingFlag=event.attendingFlag;
+    var newAttendingFlag=!previousAttendingFlag;
+
+    var eventId=event.eventId;
+
+    event.attendingFlag=newAttendingFlag;
+    var updates = {};
+  updates['/Tables/Events/' + eventId] = event;
+
+    firebase.database().ref().update(updates);
+
   }
 }

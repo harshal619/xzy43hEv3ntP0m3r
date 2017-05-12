@@ -47,7 +47,7 @@
     
       </ion-col>
       <ion-col text-right>
-        <button class="iconButtonCard" ion-button clear small color="danger" icon-left>
+        <button class="iconButtonCard" ion-button clear small [style.color]="event.attendingFlag ? 'green' : 'grey'" (click)="addAttending(event)" icon-left>
           <ion-icon name='thumbs-up'></ion-icon>
         </button>
       </ion-col>
