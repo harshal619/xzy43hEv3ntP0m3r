@@ -21,7 +21,7 @@ import { GoogleMap, GoogleMapsEvent, GoogleMapsLatLng } from 'ionic-native';
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
-  rootPage:any = EventList;
+  rootPage:any;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,public googlePlus: GooglePlus, public userModel:UserModel) {
     platform.ready().then(() => {
@@ -43,6 +43,8 @@ export class MyApp {
       });
 
       userModel.getUserFromDB();
+      env.nav.push(EventList);
+
       statusBar.styleDefault();
     });
   }
