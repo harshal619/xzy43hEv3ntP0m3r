@@ -191,12 +191,13 @@ columnLocation.forEach(item=>{
 
   }
   listItemClick(event){
-    var eventId=event.eventId;
-    let modal= this.modalCtrl.create(eventDetail,event);
+    // var eventId=event.eventId;
+    // let modal= this.modalCtrl.create(eventDetail,event);
     
-    modal.onDidDismiss((data)=>{
+    this.navCtrl.push(eventDetail,event);  
+    // modal.onDidDismiss((data)=>{
 
-    });
-    modal.present();
+    // });
+    // modal.present();
   }
 }
