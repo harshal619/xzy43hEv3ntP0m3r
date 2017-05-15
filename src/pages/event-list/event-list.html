@@ -26,7 +26,7 @@
 <ion-content padding>
  
 
-  <ion-card *ngFor="let event of events">
+  <ion-card *ngFor="let event of events" (click)="listItemClick(event)">
   <img src={{event.photoUrl}}/>
   <ion-card-content>
     <ion-card-title>
