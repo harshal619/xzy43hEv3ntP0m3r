@@ -14,6 +14,8 @@ import { SettingPage } from '../pages/setting/setting';
 import { AgentPage } from '../pages/agent/agent';
 import { AgentDetailPage } from '../pages/agentDetail/agentDetail';
 import { UserModel } from '../pages/event-list/user.model';
+import { TabsPage } from '../pages/tabs/tabs';
+
 import { GoogleMap, GoogleMapsEvent, GoogleMapsLatLng } from 'ionic-native';
 
 @Component({
@@ -43,7 +45,8 @@ export class MyApp {
       });
 
       userModel.getUserFromDB();
-      env.nav.push(EventList);
+      // env.nav.push(EventList);
+      env.nav.push(TabsPage);
 
       statusBar.styleDefault();
     });

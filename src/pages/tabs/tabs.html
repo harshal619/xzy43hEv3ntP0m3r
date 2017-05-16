@@ -1,0 +1,21 @@
+<ion-header>
+
+  <ion-navbar class="navBarColor">
+    
+    <ion-title>Events</ion-title>
+    <button ion-button menuToggle>
+       <ion-icon name="menu"></ion-icon>
+    </button>
+
+    <ion-buttons end>
+        <button ion-button icon-only (click)="filterClick()">
+            <ion-icon name="funnel"></ion-icon>
+        </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+<ion-tabs tabsPlacement="top" tabsHighlight="true"  class="withNavbar" primary>
+  <ion-tab [root]="tab1Root" tabTitle="Events"></ion-tab>
+  <ion-tab [root]="tab2Root" tabTitle="Agents"></ion-tab>
+</ion-tabs>
