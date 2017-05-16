@@ -1,0 +1,50 @@
+<ion-header >
+  <ion-navbar>
+    <ion-title>Event Detail</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="has-header">
+    <ion-card *ngFor="let event of events">
+        <img src={{event.photoUrl}}/>
+        <ion-card-content>
+            <ion-card-title>
+                {{event.title}}
+            </ion-card-title>
+
+            <ion-row class="eventTileInfoRowCss">
+                <ion-col class="locationText">
+                    Event on {{event.eventDate}}
+                </ion-col>
+            </ion-row>
+
+            <ion-row class="eventTileInfoRowCss">
+                <ion-col text-left class="locationText">
+                    at {{event.eventLocation}} , {{event.eventCity}}
+                </ion-col>
+            </ion-row>
+
+            <ion-row class="eventTileInfoRowCss">
+                <ion-col text-left class="locationText">
+                    {{event.fees}}
+                </ion-col>
+            </ion-row>
+
+            
+            <ion-row class="eventTileInfoRowCss">
+                <ion-col text-left class="locationText">
+                    Organised by  {{event.agentName}}
+                </ion-col>
+            </ion-row>
+            <ion-row class="eventTileInfoRowCss">
+                <ion-col text-left class="locationText">
+                    for {{event.categoryID}}
+                </ion-col>
+            </ion-row>
+
+        </ion-card-content>
+    </ion-card>
+</ion-content>
+
+
+

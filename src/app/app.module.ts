@@ -16,6 +16,7 @@ import { AutocompletePage } from '../pages/autocomplete/autocomplete';
 import { eventFilters } from '../pages/eventFilters/eventFilters';
 import { eventFiltersDetail } from '../pages/eventFiltersDetail/eventFiltersDetail';
 import { TabsPage } from '../pages/tabs/tabs';
+import { eventDetail } from '../pages/eventDetail/eventDetail';
 
 import { EventService } from '../services/events.service';
 import { UserModel } from '../pages/event-list/user.model';
@@ -74,7 +75,11 @@ export const config={
     AutocompletePage,
     eventFilters,
     eventFiltersDetail,
+<<<<<<< HEAD
     TabsPage
+=======
+    eventDetail
+>>>>>>> 46cd429516853c62fd6215ee78c7366faf0d13f3
   ],
   imports: [
     BrowserModule,
@@ -110,7 +115,11 @@ export const config={
     AutocompletePage,
     eventFilters,
     eventFiltersDetail,
+<<<<<<< HEAD
     TabsPage
+=======
+    eventDetail
+>>>>>>> 46cd429516853c62fd6215ee78c7366faf0d13f3
   ],
   providers: [
     StatusBar,

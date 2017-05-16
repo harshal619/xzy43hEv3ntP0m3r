@@ -12,6 +12,7 @@ import {AngularFireDatabase,FirebaseListObservable} from 'angularfire2/database'
 import * as firebase from 'firebase';
 
 import { eventFilters } from '../eventFilters/eventFilters';
+import { eventDetail } from '../eventDetail/eventDetail';
 /**
  * Generated class for the EventList page.
  *
@@ -188,5 +189,15 @@ columnLocation.forEach(item=>{
 
     firebase.database().ref().update(updates);
 
+  }
+  listItemClick(event){
+    // var eventId=event.eventId;
+    // let modal= this.modalCtrl.create(eventDetail,event);
+    
+    this.navCtrl.push(eventDetail,event);  
+    // modal.onDidDismiss((data)=>{
+
+    // });
+    // modal.present();
   }
 }
