@@ -94,6 +94,7 @@
 .platform-ios {
   ion-tabs.withNavbar {
     margin-top: 44px;
+    margin-bottom: -44px;
     color: #ED374C !important;
   }
 }
@@ -102,6 +103,7 @@
 .platform-android {
   ion-tabs.withNavbar {
     margin-top: 50px;
+    margin-bottom: -50px;
     color: #ED374C !important;
   }
 }
