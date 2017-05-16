@@ -115,11 +115,8 @@ export const config={
     AutocompletePage,
     eventFilters,
     eventFiltersDetail,
-<<<<<<< HEAD
-    TabsPage
-=======
+    TabsPage,
     eventDetail
->>>>>>> 46cd429516853c62fd6215ee78c7366faf0d13f3
   ],
   providers: [
     StatusBar,
