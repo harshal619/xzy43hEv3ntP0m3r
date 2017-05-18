@@ -17,4 +17,8 @@ export class userProfile {
     
    
     };
+
+    onSaveProfile(user){
+        
+    }
 }
