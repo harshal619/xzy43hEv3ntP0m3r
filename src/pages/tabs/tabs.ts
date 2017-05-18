@@ -31,41 +31,4 @@ headercontent:any;
 this.showheader =false;
 this.hideheader = true;
   }
-
-  
-  ngOnInit() {
-// Ionic scroll element
-this.ionScroll = this.myElement.nativeElement.getElementsByClassName('scroll-content')[0];
-// On scroll function
-this.ionScroll.addEventListener("scroll", () => {
-if(this.ionScroll.scrollTop - this.start > this.threshold) {
-this.showheader =true;
-this.hideheader = false;
-} else {
-this.showheader =false;
-this.hideheader = true;
-}
-if (this.slideHeaderPrevious >= this.ionScroll.scrollTop - this.start) {
-this.showheader =false;
-this.hideheader = true;
-}
-this.slideHeaderPrevious = this.ionScroll.scrollTop - this.start;
-});
-}
-
-onScroll(){
-  
-if(this.ionScroll.scrollTop - this.start > this.threshold) {
-this.showheader =true;
-this.hideheader = false;
-} else {
-this.showheader =false;
-this.hideheader = true;
-}
-if (this.slideHeaderPrevious >= this.ionScroll.scrollTop - this.start) {
-this.showheader =false;
-this.hideheader = true;
-}
-this.slideHeaderPrevious = this.ionScroll.scrollTop - this.start;
-}
 }

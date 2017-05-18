@@ -1,4 +1,4 @@
-<ion-header [ngClass]="{'hide-header':showheader,'show-header':hideheader}">
+<ion-header id="eventsheader" [ngClass]="{'hide-header':hideheader,'show-header':showHeader}">
 
   <ion-navbar class="navBarColor">
     
@@ -14,12 +14,12 @@
     </ion-buttons>
     
   </ion-navbar>
-
-</ion-header>
-
-<ion-content class="has-header" (ionScroll)="onScroll()">
-<ion-tabs tabsPlacement="top" tabsHighlight="true"  class="withNavbar" primary>
+<ion-tabs id="eventsSubHeader" tabsPlacement="top" tabsHighlight="true"  class="withNavbar" primary>
   <ion-tab [root]="tab1Root" tabTitle="Events"></ion-tab>
   <ion-tab [root]="tab2Root" tabTitle="Agents"></ion-tab>
 </ion-tabs>
+</ion-header>
+
+<ion-content class="has-header">
+
 </ion-content>

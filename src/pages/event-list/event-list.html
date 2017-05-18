@@ -23,7 +23,7 @@
 </ion-header>-->
 
 
-<ion-content padding>
+<ion-content padding (ionScroll)="eventListScroll()">
  
 
   <ion-card *ngFor="let event of events" (click)="listItemClick(event)">

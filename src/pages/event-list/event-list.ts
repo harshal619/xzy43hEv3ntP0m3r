@@ -37,7 +37,6 @@ showheader:boolean;
 hideheader:boolean;
 headercontent:any;
 
-
   //*******************
   userModel: UserModel = new UserModel();
   events:{
@@ -207,6 +206,41 @@ columnLocation.forEach(item=>{
   }
   listItemClick(event){
     this.navCtrl.push(eventDetail,event);  
+  }
+  eventListScroll(){
+
+    var input = document.getElementById('eventsheader');
+    var eventsSubHeader = document.getElementById('eventsSubHeader');
+    // var input = document.getElementById('eventsheader');
+
+    var currentpoint=this.content.scrollTop;
+    if(currentpoint>200){  
+      var atr=input.getAttribute("class");
+      if(atr.indexOf("hiddenBar")==-1){
+        atr=atr+" hiddenBar";
+      }
+      input.setAttribute("class", atr);
+
+      //***************************************/
+      var atr=eventsSubHeader.getAttribute("class");
+      if(atr.indexOf("hiddenSubHeaderBar")==-1){
+        atr=atr+" hiddenSubHeaderBar";
+      }
+      eventsSubHeader.setAttribute("class", atr);
+
+    }else{
+      
+      var atr=input.getAttribute("class");
+      atr=atr.replace(" hiddenBar","");
+      input.setAttribute("class",atr);
+      
+      //***************************************/
+      var atr=eventsSubHeader.getAttribute("class");
+      atr=atr.replace(" hiddenSubHeaderBar","");
+      eventsSubHeader.setAttribute("class", atr);
+
+    }
+    // var endPoint=this.ionScroll.endPoint;
   }
 
 }
