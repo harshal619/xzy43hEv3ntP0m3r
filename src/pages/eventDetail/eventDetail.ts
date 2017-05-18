@@ -16,10 +16,11 @@ export class eventDetail {
   categoryID:"",attendingFlag:false,fees:0.00,userId:"",agentName:string,categoryName:""}[]=[];
 
   agents=[];
+  tabBarElement:any;
 
     constructor(public navCtrl: NavController, public navParams:NavParams,public viewCtrl:ViewController,
         public modalCtrl:ModalController){
-    
+    this.tabBarElement = document.querySelector('#tabs ion-tabbar-section');
     var that=this;
     firebase.database().ref('Tables/Agents')
     .orderByChild('agentID')
@@ -48,4 +49,12 @@ export class eventDetail {
         console.log(this.navParams.data);
         this.events.push(this.navParams.data);
     };
+
+    ionViewWillEnter() {
+    console.log("I'm alive!");
+  }
+
+  ionViewDidLeave() {
+    console.log("I'm leaving!");
+  }
 }

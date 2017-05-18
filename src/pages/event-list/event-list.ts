@@ -200,4 +200,8 @@ columnLocation.forEach(item=>{
     // });
     // modal.present();
   }
+
+   ionViewDidLeave() {
+    console.log("I'm leavinggggg!");
+  }
 }

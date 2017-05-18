@@ -86,9 +86,11 @@ export const config={
     platforms: {
       ios: {
         menuType: 'overlay',
+        tabsHideOnSubPages: true
       },
       android: {
         menuType: 'overlay',
+        tabsHideOnSubPages: true
       }
     }
   }),

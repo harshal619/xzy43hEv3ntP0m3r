@@ -14,4 +14,11 @@ export class TabsPage {
   constructor() {
 
   }
+
+  ionViewWillEnter() {
+    console.log("I'm alive!");
+  }
+  ionViewWillLeave() {
+    console.log("Looks like I'm about to leave :(");
+  }
 }
