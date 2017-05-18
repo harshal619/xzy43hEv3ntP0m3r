@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams ,ModalController } from 'ionic-angular';
+import { Component,ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams ,ModalController,Content } from 'ionic-angular';
 import { UserModel } from './user.model';
 import { NativeStorage } from 'ionic-native';
 import { HomePage } from '../home/home';
@@ -7,6 +7,8 @@ import { AddEventPage } from '../add-event/add-event';
 import { EventService } from '../../services/events.service';
 import { GooglePlus } from '@ionic-native/google-plus';
 import { Storage } from '@ionic/storage';
+
+import {ElementRef,Renderer } from '@angular/core';
 
 import {AngularFireDatabase,FirebaseListObservable} from 'angularfire2/database';
 import * as firebase from 'firebase';
@@ -25,6 +27,18 @@ import { eventDetail } from '../eventDetail/eventDetail';
   templateUrl: 'event-list.html',
 })
 export class EventList {
+
+@ViewChild(Content) content: Content;
+start = 0;
+threshold = 100;
+slideHeaderPrevious = 0;
+ionScroll:any;
+showheader:boolean;
+hideheader:boolean;
+headercontent:any;
+
+
+  //*******************
   userModel: UserModel = new UserModel();
   events:{
     eventId: string,title: string,eventDate: string,eventTime: string,eventLocation: string,eventCity:string,
@@ -40,7 +54,8 @@ export class EventList {
   emailId:string;
   constructor(public navCtrl: NavController, public navParams: NavParams,private eventService: EventService,
    public userModel1: UserModel, public googlePlus: GooglePlus, public storage: Storage,angFire: AngularFireDatabase,
-   public modalCtrl :ModalController) {
+   public modalCtrl :ModalController,public myElement: ElementRef) {
+  
   
     this.emailId=userModel1.email;
       // this.eventsFirebase = angFire.list("/Tables/Events");
@@ -191,13 +206,7 @@ columnLocation.forEach(item=>{
 
   }
   listItemClick(event){
-    // var eventId=event.eventId;
-    // let modal= this.modalCtrl.create(eventDetail,event);
-    
     this.navCtrl.push(eventDetail,event);  
-    // modal.onDidDismiss((data)=>{
-
-    // });
-    // modal.present();
   }
+
 }
