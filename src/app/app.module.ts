@@ -17,6 +17,7 @@ import { eventFilters } from '../pages/eventFilters/eventFilters';
 import { eventFiltersDetail } from '../pages/eventFiltersDetail/eventFiltersDetail';
 import { TabsPage } from '../pages/tabs/tabs';
 import { eventDetail } from '../pages/eventDetail/eventDetail';
+import { userProfile } from '../pages/userProfile/userProfile';
 
 import { EventService } from '../services/events.service';
 import { UserModel } from '../pages/event-list/user.model';
@@ -76,7 +77,8 @@ export const config={
     eventFilters,
     eventFiltersDetail,
     TabsPage,
-    eventDetail
+    eventDetail,
+    userProfile
   ],
   imports: [
     BrowserModule,
@@ -113,7 +115,8 @@ export const config={
     eventFilters,
     eventFiltersDetail,
     TabsPage,
-    eventDetail
+    eventDetail,
+    userProfile
   ],
   providers: [
     StatusBar,
