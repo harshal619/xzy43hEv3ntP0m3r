@@ -74,5 +74,8 @@ export class MyApp {
       console.log(error);
     })
   }
+  go_to_userProfile(){
+    this.nav.push(userProfile);
+  }
 }
 
