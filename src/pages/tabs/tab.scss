@@ -1,4 +1,28 @@
+.marginTop{
+	// margin-top: 0px;
 
+	
+	-webkit-animation: scrollSubTop 200ms forwards;
+	-moz-animation: scrollSubTop 200ms forwards;
+	-ms-animation: scrollSubTop 200ms forwards;
+	animation: scrollSubTop 200ms forwards;
+}
+@keyframes scrollSubTop {
+	from { opacity:0;margin-top: 44px;}
+	to {opacity: 1;margin-top: 0px}
+}
+/* Firefox < 16 */
+@-moz-keyframes scrollSubTop {
+	from { opacity:0;margin-top: 44px;}
+	to {opacity: 1;margin-top: 0px}
+}
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes scrollSubTop {
+	from { opacity:0;margin-top: 44px;}
+	to {opacity: 1;margin-top: 0px}
+}
+
+///*********************************
 
 .hiddenBar{
 	-webkit-animation: scrollTop 500ms forwards;
@@ -8,37 +32,16 @@
 }
 @keyframes scrollTop {
 	from { opacity:0;top: 0px;}
-	to {opacity: 1;top: -41px}
+	to {opacity: 1;top: -44px}
 }
 /* Firefox < 16 */
 @-moz-keyframes scrollTop {
 	from { opacity:0;top: 0px;}
-	to {opacity: 1;top: -41px}
+	to {opacity: 1;top: -44px}
 }
 /* Safari, Chrome and Opera > 12.1 */
 @-webkit-keyframes scrollTop {
 	from { opacity:0;top: 0px;}
-	to {opacity: 1;top: -41px}
+	to {opacity: 1;top: -44px}
 }
 
-
-.hiddenSubHeaderBar{
-	-webkit-animation: scrollSubTop 200ms forwards;
-	-moz-animation: scrollSubTop 200ms forwards;
-	-ms-animation: scrollSubTop 200ms forwards;
-	animation: scrollSubTop 200ms forwards;
-}
-@keyframes scrollSubTop {
-	from { opacity:0;top: 44px;}
-	to {opacity: 1;top: 0px}
-}
-/* Firefox < 16 */
-@-moz-keyframes scrollSubTop {
-	from { opacity:0;top: 44px;}
-	to {opacity: 1;top: 0px}
-}
-/* Safari, Chrome and Opera > 12.1 */
-@-webkit-keyframes scrollSubTop {
-	from { opacity:0;top: 44px;}
-	to {opacity: 1;top: 0px}
-}

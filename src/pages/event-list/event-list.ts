@@ -29,12 +29,7 @@ import { eventDetail } from '../eventDetail/eventDetail';
 export class EventList {
 
 @ViewChild(Content) content: Content;
-start = 0;
-threshold = 100;
-slideHeaderPrevious = 0;
-ionScroll:any;
-showheader:boolean;
-hideheader:boolean;
+parentScroll:any;
 headercontent:any;
 
   //*******************
@@ -210,8 +205,9 @@ columnLocation.forEach(item=>{
   eventListScroll(){
 
     var input = document.getElementById('eventsheader');
-    var eventsSubHeader = document.getElementById('eventsSubHeader');
+    var eventsSubHeader = document.getElementById('eventSubHeader');
     // var input = document.getElementById('eventsheader');
+    var parentScrollContent=eventsSubHeader.parentElement;
 
     var currentpoint=this.content.scrollTop;
     if(currentpoint>200){  
@@ -222,12 +218,21 @@ columnLocation.forEach(item=>{
       input.setAttribute("class", atr);
 
       //***************************************/
-      var atr=eventsSubHeader.getAttribute("class");
-      if(atr.indexOf("hiddenSubHeaderBar")==-1){
-        atr=atr+" hiddenSubHeaderBar";
+      // var atr1=eventsSubHeader.getAttribute("class");
+      // if(atr1.indexOf("hiddenSubHeaderBar")==-1){
+      //   atr1=atr1+" hiddenSubHeaderBar";
+      // }
+      // eventsSubHeader.setAttribute("class", atr1);
+      // ****************
+      var atr2=parentScrollContent.getAttribute("class");
+      if(atr2.indexOf("marginTop")==-1){
+        atr2=atr2+" marginTop";
+        
+        this.parentScroll=parentScrollContent.getAttribute("style");
+        parentScrollContent.setAttribute("class", atr2);
+        parentScrollContent.setAttribute("style", "");
       }
-      eventsSubHeader.setAttribute("class", atr);
-
+      
     }else{
       
       var atr=input.getAttribute("class");
@@ -235,9 +240,17 @@ columnLocation.forEach(item=>{
       input.setAttribute("class",atr);
       
       //***************************************/
-      var atr=eventsSubHeader.getAttribute("class");
-      atr=atr.replace(" hiddenSubHeaderBar","");
-      eventsSubHeader.setAttribute("class", atr);
+      // var atr1=eventsSubHeader.getAttribute("class");
+      // atr1=atr1.replace(" hiddenSubHeaderBar","");
+      // eventsSubHeader.setAttribute("class", atr1);
+
+
+      //***************************************/
+      var atr2=parentScrollContent.getAttribute("class");
+      atr2=atr2.replace(" marginTop","");
+      parentScrollContent.setAttribute("class", atr2);
+      parentScrollContent.setAttribute("style",this.parentScroll);
+      parentScrollContent.setAttribute("style","margin-top:44px");
 
     }
     // var endPoint=this.ionScroll.endPoint;
