@@ -15,6 +15,7 @@ import { AgentPage } from '../pages/agent/agent';
 import { AgentDetailPage } from '../pages/agentDetail/agentDetail';
 import { UserModel } from '../pages/event-list/user.model';
 import { TabsPage } from '../pages/tabs/tabs';
+import { userProfile } from '../pages/userProfile/userProfile';
 
 import { GoogleMap, GoogleMapsEvent, GoogleMapsLatLng } from 'ionic-native';
 
@@ -72,6 +73,9 @@ export class MyApp {
     },function (error) {
       console.log(error);
     })
+  }
+  go_to_userProfile(){
+    this.nav.push(userProfile);
   }
 }
 

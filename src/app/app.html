@@ -1,5 +1,5 @@
 <ion-menu side="left" [content]="content" class="stable-bg">
-    <ion-header class="expanded">
+    <ion-header class="expanded" (click)="go_to_userProfile()" menuClose>
             <img src={{userModel.picture}} class="avatar motion spin fade">
             <div class="menu-bottom">
                 {{userModel.name}}

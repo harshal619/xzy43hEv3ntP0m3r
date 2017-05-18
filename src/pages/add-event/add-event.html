@@ -24,7 +24,7 @@
       <ion-input type="text" name="eventCategory" ngModel required></ion-input>
 -->
 
-       <ion-label flaoting>Event Category</ion-label>
+       <ion-label floating>Event Category</ion-label>
 
 <ion-select name="eventCategory" ngModel required >
     <ion-option *ngFor="let cat of categories" value="{{cat.ID}}" >{{cat.Name}}</ion-option>
@@ -42,7 +42,7 @@
    
     <ion-item class="paddingIonItem">
 
-      <ion-label flaoting>Agent Name</ion-label>
+      <ion-label floating>Agent Name</ion-label>
 
 <ion-select name="agentName" ngModel required >
     <ion-option *ngFor="let agent of agentsFirebase | async" value="{{agent.agentID}}" >{{agent.agentName}}</ion-option>

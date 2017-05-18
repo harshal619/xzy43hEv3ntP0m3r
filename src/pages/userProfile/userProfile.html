@@ -1,0 +1,37 @@
+<ion-header >
+  <ion-navbar>
+    <ion-title>User Detail</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <form (ngSubmit)="onSaveProfile(f.value)" #f="ngForm">
+        <ion-item class="paddingIonItem">
+            <ion-label floating>Last Name</ion-label>
+            <ion-input type="text" name="lastName" ngModel required></ion-input>
+        </ion-item>
+
+        <ion-item class="paddingIonItem">
+            <ion-label floating>First Name</ion-label>
+            <ion-input type="text" name="firstName" ngModel required></ion-input>
+        </ion-item>
+
+        
+        <ion-item class="paddingIonItem">
+            <ion-label floating>Budget</ion-label>
+            <ion-input type="text" name="budget" ngModel required></ion-input>
+        </ion-item>
+
+        
+        <ion-item class="paddingIonItem">
+            <ion-label floating>Remaining Amount</ion-label>
+            <ion-input type="text" name="remainingAmount" ngModel required></ion-input>
+        </ion-item>
+    <button ion-button block type="submit" [disabled]="!f.valid">Update</button>
+  </form>
+
+            
+</ion-content>
+
+
+

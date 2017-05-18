@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams ,ModalController } from 'ionic-angular';
+import { Component,ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams ,ModalController,Content } from 'ionic-angular';
 import { UserModel } from './user.model';
 import { NativeStorage } from 'ionic-native';
 import { HomePage } from '../home/home';
@@ -7,6 +7,8 @@ import { AddEventPage } from '../add-event/add-event';
 import { EventService } from '../../services/events.service';
 import { GooglePlus } from '@ionic-native/google-plus';
 import { Storage } from '@ionic/storage';
+
+import {ElementRef,Renderer } from '@angular/core';
 
 import {AngularFireDatabase,FirebaseListObservable} from 'angularfire2/database';
 import * as firebase from 'firebase';
@@ -25,6 +27,12 @@ import { eventDetail } from '../eventDetail/eventDetail';
   templateUrl: 'event-list.html',
 })
 export class EventList {
+
+@ViewChild(Content) content: Content;
+parentScroll:any;
+headercontent:any;
+
+  //*******************
   userModel: UserModel = new UserModel();
   events:{
     eventId: string,title: string,eventDate: string,eventTime: string,eventLocation: string,eventCity:string,
@@ -40,7 +48,8 @@ export class EventList {
   emailId:string;
   constructor(public navCtrl: NavController, public navParams: NavParams,private eventService: EventService,
    public userModel1: UserModel, public googlePlus: GooglePlus, public storage: Storage,angFire: AngularFireDatabase,
-   public modalCtrl :ModalController) {
+   public modalCtrl :ModalController,public myElement: ElementRef) {
+  
   
     this.emailId=userModel1.email;
       // this.eventsFirebase = angFire.list("/Tables/Events");
@@ -191,17 +200,66 @@ columnLocation.forEach(item=>{
 
   }
   listItemClick(event){
-    // var eventId=event.eventId;
-    // let modal= this.modalCtrl.create(eventDetail,event);
-    
     this.navCtrl.push(eventDetail,event);  
-    // modal.onDidDismiss((data)=>{
+  }
+  eventListScroll(){
 
-    // });
-    // modal.present();
+    var input = document.getElementById('eventsheader');
+    var eventsSubHeader = document.getElementById('eventSubHeader');
+    // var input = document.getElementById('eventsheader');
+    var parentScrollContent=eventsSubHeader.parentElement;
+
+    var currentpoint=this.content.scrollTop;
+    if(currentpoint>200){  
+      var atr=input.getAttribute("class");
+      if(atr.indexOf("hiddenBar")==-1){
+        atr=atr+" hiddenBar";
+      }
+      input.setAttribute("class", atr);
+
+      //***************************************/
+      // var atr1=eventsSubHeader.getAttribute("class");
+      // if(atr1.indexOf("hiddenSubHeaderBar")==-1){
+      //   atr1=atr1+" hiddenSubHeaderBar";
+      // }
+      // eventsSubHeader.setAttribute("class", atr1);
+      // ****************
+      var atr2=parentScrollContent.getAttribute("class");
+      if(atr2.indexOf("marginTop")==-1){
+        atr2=atr2+" marginTop";
+        
+        this.parentScroll=parentScrollContent.getAttribute("style");
+        parentScrollContent.setAttribute("class", atr2);
+        parentScrollContent.setAttribute("style", "");
+      }
+      
+    }else{
+      
+      var atr=input.getAttribute("class");
+      atr=atr.replace(" hiddenBar","");
+      input.setAttribute("class",atr);
+      
+      //***************************************/
+      // var atr1=eventsSubHeader.getAttribute("class");
+      // atr1=atr1.replace(" hiddenSubHeaderBar","");
+      // eventsSubHeader.setAttribute("class", atr1);
+
+
+      //***************************************/
+      var atr2=parentScrollContent.getAttribute("class");
+      atr2=atr2.replace(" marginTop","");
+      parentScrollContent.setAttribute("class", atr2);
+      parentScrollContent.setAttribute("style",this.parentScroll);
+      parentScrollContent.setAttribute("style","margin-top:44px");
+
+    }
+    // var endPoint=this.ionScroll.endPoint;
   }
 
+<<<<<<< HEAD
    ionViewDidLeave() {
     console.log("I'm leavinggggg!");
   }
+=======
+>>>>>>> 7da9ac88765cabc2266f7158adb2a297d66352d3
 }
