@@ -256,10 +256,7 @@ columnLocation.forEach(item=>{
     // var endPoint=this.ionScroll.endPoint;
   }
 
-<<<<<<< HEAD
    ionViewDidLeave() {
     console.log("I'm leavinggggg!");
   }
-=======
->>>>>>> 7da9ac88765cabc2266f7158adb2a297d66352d3
 }
