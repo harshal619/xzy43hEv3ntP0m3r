@@ -224,7 +224,7 @@ columnLocation.forEach(item=>{
         
         this.parentScroll=parentScrollContent.getAttribute("style");
         parentScrollContent.setAttribute("class", atr2);
-        parentScrollContent.setAttribute("style", "");
+        // parentScrollContent.setAttribute("style", "");
       }
       
     }else{
@@ -243,8 +243,8 @@ columnLocation.forEach(item=>{
       var atr2=parentScrollContent.getAttribute("class");
       atr2=atr2.replace(" marginTop","");
       parentScrollContent.setAttribute("class", atr2);
-      parentScrollContent.setAttribute("style",this.parentScroll);
-      parentScrollContent.setAttribute("style","margin-top:44px");
+      // parentScrollContent.setAttribute("style",this.parentScroll);
+      // parentScrollContent.setAttribute("style","margin-top:44px");
 
     }
     // var endPoint=this.ionScroll.endPoint;
