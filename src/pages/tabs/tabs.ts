@@ -32,10 +32,4 @@ this.showheader =false;
 this.hideheader = true;
   }
 
-  ionViewWillEnter() {
-    console.log("I'm alive!");
-  }
-  ionViewWillLeave() {
-    console.log("Looks like I'm about to leave :(");
-  }
 }

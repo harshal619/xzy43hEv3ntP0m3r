@@ -5,8 +5,8 @@
                 {{userModel.name}}
             </div>
     </ion-header>
-    <ion-content class="stable-bg">
-        <ion-list class="stable-bg">
+    <ion-content>
+        <ion-list>
             <ion-item no-lines class="menuListItem stable-bg" nav-clear menu-close (click)="go_to_home()" menuClose>
                 <ion-icon name="albums" item-left></ion-icon>
                 Events
@@ -26,4 +26,4 @@
         </ion-list>
     </ion-content>
 </ion-menu>
-<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
+<ion-nav class="stable-bg" [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

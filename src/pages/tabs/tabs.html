@@ -1,16 +1,16 @@
 
 
-<ion-header id="eventsheader" [ngClass]="{'hide-header':hideheader,'show-header':showHeader}">
+<ion-header id="eventsheader" class="mainPageHeader" [ngClass]="{'hide-header':hideheader,'show-header':showHeader}">
 
   <ion-navbar class="navBarColor">
     
-    <ion-title>Events</ion-title>
-    <button ion-button menuToggle>
+    <ion-title class='toolbar-custom-icon'>Events</ion-title>
+    <button ion-button menuToggle class='toolbar-custom-icon'>
        <ion-icon name="menu"></ion-icon>
     </button>
 
     <ion-buttons end>
-        <button ion-button icon-only (click)="filterClick()">
+        <button ion-button icon-only (click)="filterClick()" class='toolbar-custom-icon'>
             <ion-icon name="funnel"></ion-icon>
         </button>
     </ion-buttons>

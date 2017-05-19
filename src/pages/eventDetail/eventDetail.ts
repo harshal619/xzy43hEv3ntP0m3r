@@ -50,11 +50,4 @@ export class eventDetail {
         this.events.push(this.navParams.data);
     };
 
-    ionViewWillEnter() {
-    console.log("I'm alive!");
-  }
-
-  ionViewDidLeave() {
-    console.log("I'm leaving!");
-  }
 }
