@@ -3,10 +3,10 @@
 	margin-top: 44px !important;
 
 	
-	-webkit-animation: scrollSubTop 1000ms forwards;
-	-moz-animation: scrollSubTop 1000ms forwards;
-	-ms-animation: scrollSubTop 1000ms forwards;
-	animation: scrollSubTop 1000ms forwards;
+	-webkit-animation: scrollSubTop 500ms forwards;
+	-moz-animation: scrollSubTop 500ms forwards;
+	-ms-animation: scrollSubTop 500ms forwards;
+	animation: scrollSubTop 500ms forwards;
 }
 @keyframes scrollSubTop {
 	from { margin-top: 44px;}
@@ -26,10 +26,10 @@
 ///*********************************
 
 .hiddenBar{
-	-webkit-animation: scrollTop 1000ms forwards;
-	-moz-animation: scrollTop 1000ms forwards;
-	-ms-animation: scrollTop 1000ms forwards;
-	animation: scrollTop 1000ms forwards;
+	-webkit-animation: scrollTop 500ms forwards;
+	-moz-animation: scrollTop 500ms forwards;
+	-ms-animation: scrollTop 500ms forwards;
+	animation: scrollTop 500ms forwards;
 }
 @keyframes scrollTop {
 	from { top: 0px;}
